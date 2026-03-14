@@ -1,0 +1,15 @@
+---
+import TechIcon from "./TechIcon.astro";
+
+const { name, icon } = Astro.props;
+---
+
+<div class="skill-card">
+
+<TechIcon icon={icon} />
+
+<span class="skill-name">
+{name}
+</span>
+
+</div>

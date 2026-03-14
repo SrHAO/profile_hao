@@ -2,24 +2,24 @@
 import "../styles/Header.css";
 ---
 
-<header class="hero">
-  <div>
+<section class="hero-wrapper">
+  <header class="hero">
+    <div>
       <video
-    class="hero-video"
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="metadata"
-    poster="/favicon.svg"
-  >
-    <source src="/videos/NavVid.mp4" type="video/mp4" />
-  </video>
-  </div>
-</header>
-  
-<div class="hero-overlay">
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        poster="/favicon.svg"
+      >
+        <source src="/videos/NavVid.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </header>
 
+  <div class="hero-overlay">
     <h1
       class="animated-title"
       data-translate
@@ -28,7 +28,5 @@ import "../styles/Header.css";
     >
       Every Component Empowers The System
     </h1>
-
   </div>
-
-
+</section>

@@ -1,0 +1,28 @@
+---
+const { icon, size = 36 } = Astro.props;
+
+const svg = icon.svg;
+const color = `#${icon.hex}`;
+---
+
+<div
+  class="tech-icon github:${icon.title === 'GitHub'}"
+  style={`width:${size}px;height:${size}px;color:${color};fill:currentColor;`}
+  set:html={svg}
+/>
+
+<style>
+  /* Dark mode: colores originales para todos excepto GitHub */
+  html.dark .tech-icon:not(.github\:true) {
+    filter: brightness(0) saturate(100%) invert(95%) sepia(6%) saturate(99%) hue-rotate(250deg) brightness(107%) contrast(101%);
+  }
+  
+  /* GitHub mantiene color original en dark */
+  html.dark .tech-icon.github\\:true {
+    filter: none;
+  }
+  
+  .tech-icon svg {
+    filter: inherit;
+  }
+</style>
