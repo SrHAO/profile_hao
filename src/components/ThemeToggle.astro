@@ -1,0 +1,40 @@
+<button id="theme-toggle" class="theme-toggle-btn">
+  <div id="toggle-circle" class="toggle-circle">
+    <span id="icon">🌞</span>
+  </div>
+</button>
+
+<script>
+  const button = document.getElementById("theme-toggle");
+  const icon = document.getElementById("icon");
+  const circle = document.getElementById("toggle-circle");
+
+  function updateIcon() {
+    if (!button || !icon || !circle) return;
+
+    if (document.documentElement.classList.contains("dark")) {
+      icon.textContent = "🌙";
+      circle.classList.add("dark-mode");
+    } else {
+      icon.textContent = "🌞";
+      circle.classList.remove("dark-mode");
+    }
+  }
+
+  if (button) {
+    button.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+
+      if (document.documentElement.classList.contains("dark")) {
+        localStorage.theme = "dark";
+      } else {
+        localStorage.theme = "light";
+      }
+
+      updateIcon();
+    });
+  }
+
+  // Initial update
+  updateIcon();
+</script>

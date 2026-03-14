@@ -1,0 +1,33 @@
+---
+import "../styles/BackToTop.css";
+---
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top" title="Back to top">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="19 12 12 5 5 12"></polyline>
+  </svg>
+</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById("backToTop");
+    if (!button) return;
+
+    const showThreshold = window.innerHeight * 0.5;
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > showThreshold) {
+        button.classList.add("show");
+      } else {
+        button.classList.remove("show");
+      }
+    });
+
+    button.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+</script>
+

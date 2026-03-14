@@ -1,0 +1,89 @@
+---
+import "../styles/carousel.css";
+
+interface Props {
+  images: {
+    src: string;
+    alt: string;
+    title?: string;
+    description?: string;
+  }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="carousel">
+  <button class="carousel-btn prev">❮</button>
+
+  <div class="carousel-window">
+    <div class="carousel-track">
+      {
+        images.map((image) => (
+          <div class="carousel-slide">
+            <img src={image.src} alt={image.alt} />
+            <div class="carousel-caption">
+              {image.title && (
+                <h2
+                  data-translate
+                  data-en={image.title}
+                  data-es={image.title.replace("Project", "Proyecto")}
+                >
+                  {image.title}
+                </h2>
+              )}
+              {image.description && (
+                <p
+                  data-translate
+                  data-en={image.description}
+                  data-es={image.description
+                    .replace("with", "con")
+                    .replace("platform", "plataforma")
+                    .replace("website", "sitio web")
+                    .replace("design", "diseño")}
+                >
+                  {image.description}
+                </p>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <button class="carousel-btn next">❯</button>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let index = 0;
+
+    const track = document.querySelector(".carousel-track") as HTMLElement;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const nextBtn = document.querySelector(".carousel-btn.next");
+    const prevBtn = document.querySelector(".carousel-btn.prev");
+
+    if (!track || slides.length === 0 || !nextBtn || !prevBtn) return;
+
+    function updateCarousel() {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      index++;
+      if (index >= slides.length) {
+        index = 0;
+      }
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      index--;
+      if (index < 0) {
+        index = slides.length - 1;
+      }
+      updateCarousel();
+    });
+  });
+</script>

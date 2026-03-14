@@ -1,0 +1,32 @@
+.animated-title {
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.1;
+
+  background: linear-gradient(
+    90deg,
+    #dc2626,
+    #2563eb,
+    #f8fafc,
+    #1f2937,
+    #059669
+  );
+
+  background-size: 300%;
+
+  -webkit-background-clip: text;
+  color: transparent;
+
+  animation: gradientMove 4s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 300%;
+  }
+}

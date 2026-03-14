@@ -1,0 +1,224 @@
+/* Footer Base Styles */
+.footer {
+  --footer-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  --footer-text: #475569;
+  --footer-border: rgba(0, 0, 0, 0.08);
+  --footer-link: #64748b;
+  --footer-link-border: rgba(0, 0, 0, 0.1);
+  
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border-top: 1px solid var(--footer-border);
+  margin-top: auto;
+  width: 100%;
+}
+
+html.dark .footer {
+  --footer-bg: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  --footer-text: #e2e8f0;
+  --footer-border: rgba(255, 255, 255, 0.1);
+  --footer-link: #94a3b8;
+  --footer-link-border: rgba(255, 255, 255, 0.15);
+}
+
+/* Container */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2.5rem 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* Content */
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Icons Row - Main Flex Layout */
+.footer-icons-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+/* Created Section */
+.created-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.created-by, .location, .cell {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--footer-text);
+  line-height: 1.45;
+}
+
+/* Contact Title */
+.contact-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--footer-text);
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* Copyright */
+.copyright-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  width: 100%;
+  text-align: center;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  margin: 0;
+  color: var(--footer-text);
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Social Links */
+.social-links-group {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link svg {
+  width: 50px;
+  height: 50px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 90px;
+  color: var(--footer-link);
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  border: 1px solid var(--footer-link-border);
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.social-link:hover {
+  transform: translateY(-4px);
+}
+
+.social-link.linkedin:hover {
+  color: #0A66C2;
+  background: rgba(10, 102, 194, 0.15);
+  box-shadow: 0 10px 25px rgba(10, 102, 194, 0.3);
+}
+
+.social-link.github:hover {
+  color: #3e11a7;
+  background: rgba(139, 92, 246, 0.15);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+}
+
+html.dark .social-link.github:hover {
+  color: #a78bfa !important;
+}
+
+.social-link.email:hover {
+  color: #ea4335;
+  background: rgba(234, 67, 53, 0.15);
+  box-shadow: 0 10px 25px rgba(234, 67, 53, 0.3);
+}
+
+.social-link.whatsapp:hover {
+  color: #25D366;
+  background: rgba(37, 211, 102, 0.2);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 2rem 15px;
+    gap: 1.5rem;
+  }
+  
+  .social-links-group {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-icons-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .created-section {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-container {
+    padding: 2.5rem 10px;
+  }
+  
+  .social-links-group {
+    gap: 2.75rem;
+    justify-content: center;
+  }
+  
+  .social-link {
+    width: 62px;
+    height: 62px;
+    font-size: 2.125rem;
+  }
+  
+  .copyright {
+    font-size: 0.9rem;
+  }
+  
+  .created-by, .location, .cell {
+    font-size: 1rem;
+  }
+}
+
+/* Sticky Footer Support */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.footer {
+  left: 0;
+  right: 0;
+  margin: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Dark mode social links */
+html.dark .social-link {
+  border-color: var(--footer-link-border);
+}

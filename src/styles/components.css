@@ -1,0 +1,25 @@
+.theme-toggle-btn {
+  width: 64px;
+  height: 36px;
+  background: #d1d5db;
+  border-radius: 9999px;
+  padding: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+html.dark .theme-toggle-btn {
+  background: #374151;
+}
+
+.toggle-circle {
+  width: 28px;
+  height: 28px;
+  background: #fbbf24;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-circle.dark-mode {
+  transform: translateX(32px);
+}

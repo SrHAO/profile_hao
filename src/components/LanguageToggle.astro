@@ -1,0 +1,40 @@
+---
+import "../styles/LanguageToggle.css";
+---
+
+<button id="lang-toggle" class="lang-btn"> 🌐 ES </button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const button = document.getElementById(
+      "lang-toggle",
+    ) as HTMLButtonElement | null;
+
+    if (!button) return;
+
+    let lang =
+      localStorage.getItem("lang") || document.documentElement.lang || "es";
+
+    function updateLanguage() {
+      document.documentElement.lang = lang;
+      button.textContent = lang === "en" ? "🌐 EN" : "🌐 ES";
+
+      document.querySelectorAll("[data-translate]").forEach((el) => {
+        const element = el as HTMLElement;
+        if (lang === "en") {
+          el.textContent = element.dataset.en || el.textContent;
+        } else {
+          el.textContent = element.dataset.es || el.textContent;
+        }
+      });
+    }
+
+    button.addEventListener("click", () => {
+      lang = lang === "en" ? "es" : "en";
+      localStorage.setItem("lang", lang);
+      updateLanguage();
+    });
+
+    updateLanguage();
+  });
+</script>

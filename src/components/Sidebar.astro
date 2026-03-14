@@ -1,0 +1,56 @@
+---
+import "../styles/Sidebar.css";
+import ThemeToggle from "./ThemeToggle.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+---
+
+<!-- Toggle Button -->
+<input type="checkbox" id="sidebar-toggle" class="sidebar-checkbox" />
+
+<label
+  for="sidebar-toggle"
+  class="sidebar-toggle"
+  aria-label="Toggle navigation menu"
+>
+  <span class="hamburger">
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </span>
+</label>
+
+<!-- Sidebar -->
+<aside class="sidebar" role="navigation" aria-label="Main navigation">
+  <nav class="sidebar-nav">
+    <!-- Main Navigation (top) -->
+    <div class="nav-section">
+      <ul>
+        <li>
+          <a href="/" data-translate data-en="Home" data-es="Inicio">Home</a>
+        </li>
+        <li>
+          <a href="/about" data-translate data-en="About" data-es="Acerca"
+            >About</a>
+        </li>
+        <li>
+          <a
+            href="/proyects"
+            data-translate
+            data-en="Projects"
+            data-es="Proyectos">Proyects</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Toggles Section: Pushed to Bottom (space allowed) -->
+    <div class="toggles-section">
+      <div class="toggles-container">
+        <ThemeToggle />
+        <LanguageToggle />
+      </div>
+    </div>
+  </nav>
+</aside>
+
+<!-- Overlay -->
+<label for="sidebar-toggle" class="sidebar-overlay" aria-hidden="true"></label>
+
