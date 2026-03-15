@@ -7,7 +7,8 @@ import {
   siGithub,
   siGit,
   siHtml5,
-  siCss3
+  siCss3,
+  siPython
 } from "simple-icons";
 
 export const skills = [
@@ -17,6 +18,7 @@ export const skills = [
   { name: "React", icon: siReact },
   { name: "Astro", icon: siAstro },
   { name: "Node.js", icon: siNodedotjs },
+  { name: "Python", icon: siPython },
   { name: "Tailwind CSS", icon: siTailwindcss },
   { name: "GitHub", icon: siGithub },
   { name: "Git", icon: siGit }
