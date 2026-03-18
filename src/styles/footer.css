@@ -34,11 +34,27 @@ html.dark .footer {
 
 /* Content */
 .footer-content {
-  width: 100%;
-  max-width: 1200px;
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
+  min-height: 140px;
+}
+
+@media (max-width: 1024px) {
+  .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    gap: 1.5rem;
+  }
 }
 
 /* Icons Row - Main Flex Layout */
@@ -160,6 +176,17 @@ html.dark .social-link.github:hover {
   .social-links-group {
     gap: 2rem;
   }
+
+    .footer-content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -210,15 +237,74 @@ main {
   flex: 1;
 }
 
-.footer {
-  left: 0;
-  right: 0;
-  margin: 0 !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
+.footer-left,
+.footer-center,
+.footer-right {
+  display: flex;
+  align-items: center;
 }
+
+/* IZQUIERDA */
+.footer-left {
+  justify-content: flex-start;
+  margin-right: auto;
+  padding-left: 1rem;
+}
+
+@media (min-width: 1200px) {
+  .footer-left {
+    padding-left: 2rem;
+  }
+}
+
+/* CENTRO */
+.footer-center {
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  flex: 1;
+}
+
+/* DERECHA */
+.footer-right {
+  justify-content: flex-end;
+  margin-left: auto;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1200px) {
+  .footer-right {
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .footer-center {
+    max-width: 400px;
+  }
+}
+
+/* LOGO */
+.footer-logo {
+  color: rgb(34, 153, 23);
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-logo:hover {
+  transform: scale(1.1);
+  color:#151616;
+}
+
+html.dark .footer-logo {
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
 
 /* Dark mode social links */
 html.dark .social-link {
   border-color: var(--footer-link-border);
 }
+

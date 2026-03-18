@@ -1,22 +1,19 @@
 ---
 import Layout from "../layouts/layout.astro";
 import Header from "../components/Header.astro";
+import TechstackCarousel from "../components/ui/TechstackCarousel.astro";
+import AboutMe from "../components/AboutMe.astro";
+import ScrollReveal from "../components/ScrollReveal.astro";
 ---
 
 <Layout title="Web Developer Profile">
 
 <Header />
 
-<section class="max-w-6xl mx-auto px-6 py-20">
+{/*<AboutMe />*/}
 
-<h2 class="text-3xl font-bold mb-6" data-translate data-en="About Me" data-es="Sobre Mí">
-  About Me
-</h2>
+<ScrollReveal />
 
-<p class="text-lg text-gray-500 dark:text-gray-300" data-translate data-en="Frontend developer focused on building scalable interfaces." data-es="Desarrollador Frontend enfocado en construir interfaces escalables.">
-  Frontend developer focused on building scalable interfaces.
-</p>
-
-</section>
+<TechstackCarousel/>
 
 </Layout>

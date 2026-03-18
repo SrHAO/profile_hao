@@ -1,0 +1,49 @@
+.about-card {
+  position: relative;
+  max-width: 600px;
+  cursor: pointer;
+}
+
+/* Imagen */
+.about-image {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+}
+
+/* Texto oculto */
+.about-content {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease;
+
+  border-radius: 16px;
+}
+
+/* Cuando haces click */
+.about-card.active .about-content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.about-info {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.about-info.show {
+  opacity: 1;
+  transform: translateY(0);
+}

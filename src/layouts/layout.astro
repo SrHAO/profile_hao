@@ -11,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = "Web Developer Portfolio - Showcasing projects and skills",
+description = 'Web Developer Portfolio - Showcasing projects and skills'
 } = Astro.props;
 ---
 
@@ -30,7 +30,10 @@ const {
 <script is:inline>
 (function () {
 
-const storedTheme = localStorage.getItem("theme");
+
+  /* Initializes dark mode from localStorage on page load */
+  const storedTheme = localStorage.getItem('theme');
+
 
 if (storedTheme === "dark" || !storedTheme) {
 document.documentElement.classList.add("dark");

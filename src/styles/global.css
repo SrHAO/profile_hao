@@ -13,3 +13,59 @@ html {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
+
+
+/*TechStack*/
+.tech-stack{
+padding:3rem 0;
+text-align:center;
+}
+
+.tech-title{
+margin-bottom:2rem;
+font-size:1.4rem;
+font-weight:600;
+}
+
+.tech-carousel{
+overflow:hidden;
+width:100%;
+}
+
+.tech-track{
+display:flex;
+gap:3rem;
+width:max-content;
+animation:tech-scroll 25s linear infinite;
+}
+
+.tech-icon svg{
+opacity:.8;
+transition:.3s ease;
+}
+
+.tech-icon svg:hover{
+transform:scale(1.2);
+opacity:1;
+}
+
+@keyframes tech-scroll{
+
+0%{
+transform:translateX(0);
+}
+
+100%{
+transform:translateX(-50%);
+}
+
+}
+
+/* Index p darker text - modo claro oscuro */
+.index-p-text {
+  color: #1f2937 !important; /* gray-800 darker */
+}
+
+.dark .index-p-text {
+  color: #f3f4f6 !important; /* gray-100 light */
+}

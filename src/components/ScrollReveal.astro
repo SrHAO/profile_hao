@@ -1,0 +1,104 @@
+---
+/* Imports CardFlip component and scroll-reveal CSS styles */
+import CardFlip from "./Cardflip.astro";
+import "../styles/scroll-reveal.css";
+---
+
+<script is:inline>
+  /* Initializes all reveal animations and event listeners */
+  const initReveal = () => {
+    /* Selects all reveal elements for intersection observer */
+    const elements = document.querySelectorAll(
+      ".reveal, .reveal-left, .reveal-right, .reveal-scale",
+    );
+
+    /* Creates observer that triggers animations when elements enter viewport */
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    /* Attaches observer to all reveal elements */
+    elements.forEach((el) => observer.observe(el));
+
+    /* Selects flip cards for click interaction */
+    const flipCards = document.querySelectorAll(".profile-flip");
+
+    /* Adds click listener to each flip card */
+    flipCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        /* Toggles flipped class for 3D rotation */
+        card.classList.toggle("flipped");
+
+        /* Toggles about info visibility if element exists */
+        const info = document.getElementById("about-info");
+        if (info) {
+          if (card.classList.contains("flipped")) {
+            info.classList.add("show");
+          } else {
+            info.classList.remove("show");
+          }
+        }
+      });
+    });
+  };
+
+  /* Runs on DOM load and Astro page load */
+  document.addEventListener("DOMContentLoaded", initReveal);
+  document.addEventListener("astro:page-load", initReveal);
+</script>
+
+<section class="py-20 max-w-6xl mx-auto px-6">
+  <h1
+    class="reveal text-4xl md:text-5xl font-bold mb-12 text-center"
+    data-translate
+    data-en="About Me"
+    data-es="Sobre mí"
+  >
+    Sobre mí
+  </h1>
+  <CardFlip />
+  <div class="about-info" id="about-info">
+    <h2
+      class="text-4xl md:text-5xl font-bold mt-0 mb-6"
+      data-translate
+      data-en="Frontend Developer"
+      data-es="Desarrollador Front-End"
+    >
+      Frontend Developer
+    </h2>
+    <p
+      class="text-2xl md:text-1xl font-width mt-0 mb-3"
+      data-translate
+      data-en="Frontend developer focused on creating modern, scalable, and accessible interfaces."
+      data-es="Soy un desarrollador Frontend enfocado en crear interfaces modernas, escalables y accesibles."
+    >
+      Soy un desarrollador Frontend enfocado en crear interfaces modernas,
+      escalables y accesibles.
+    </p>
+    <p
+      class="text-2xl md:text-1xl font-width mt-0 mb-3"
+      data-translate
+      data-en="Specializes in JavaScript, React, and Astro for fast optimized web apps."
+      data-es="Trabajo principalmente con JavaScript, React y Astro para construir aplicaciones web rápidas y optimizadas."
+    >
+      Trabajo principalmente con JavaScript, React y Astro para construir
+      aplicaciones web rápidas, optimizadas.
+    </p>
+    <p
+      class="text-2xl md:text-1xl font-width mt-0 mb-3"
+      data-translate
+      data-en="Self-taught, constantly learning new technologies through docs, courses, and projects."
+      data-es="También soy autodidacta y constantemente aprendo nuevas tecnologías a través de documentación, cursos y proyectos personales."
+    >
+      También soy autodidacta y constantemente aprendo nuevas tecnologías a
+      través de documentación, cursos y proyectos personales.
+    </p>
+  </div>
+</section>
