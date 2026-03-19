@@ -55,6 +55,8 @@
 /* Profile flip container - 3D perspective for flip effect */
 .profile-flip-container {
   perspective: 1200px;
+  display: flex;
+  justify-content: center;
 }
 
 /* Profile flip card - Main card container with 3D transform */
@@ -66,11 +68,21 @@
   cursor: pointer;
   transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transform-style: preserve-3d;
+  will-change: transform;
 }
 
 /* Flipped state - Rotates card 180 degrees on Y axis */
 .profile-flip.flipped {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg) scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .profile-flip.flipped {
+    transform: translateX(-80px) rotateY(180deg) scale(1.02);
+  }
+}
+.profile-flip:hover:not(.flipped) {
+  transform: scale(1.03);
 }
 
 /* Front and back faces - Hidden when facing away */
@@ -89,12 +101,12 @@
   background: white;
 }
 
-/* Profile image - Full cover with chest crop positioning */
+/* Profile image - Full cover, now perfectly centered for large screens */
 .profile-front img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 25%;
+  object-position: 50% 50%;
 }
 
 /* Back face styling - Gradient background with centered text */
@@ -109,6 +121,8 @@
   padding: 2rem;
   transform: rotateY(180deg);
   border-radius: 20px;
+  --bg-color: rgba(0, 0, 0, 0.2); 
+  --text-color: #ffffff;
 }
 
 /* Mobile responsive adjustments for flip card */
@@ -123,7 +137,7 @@
   }
 }
 
-/* About info container - Hidden text revealed on flip */
+/* About info - base state (mobile first) */
 .about-info {
   opacity: 0;
   transform: translateY(20px);
@@ -132,13 +146,161 @@
   text-align: center;
 }
 
+/* Mobile: text appears from below (translateY) */
 .about-info.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Container centering - Flex center for flip card */
-.profile-flip-container {
-  display: flex;
-  justify-content: center;
+@media (min-width: 768px) {
+  .about-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  /* Desktop: text enters from right (translateX) */
+  .about-info {
+    max-width: 500px;
+    text-align: left;
+    margin-top: 0;
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  .about-info.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+/* TYPEWRITER CORREGIDO */
+.typewriter {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  color: var(--text-color);
+}
+
+/* capa que cubre el texto */
+.typewriter::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--bg-color);
+  transform: translateX(0);
+}
+
+/* cursor */
+.typewriter::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  height: 1em;
+  background: currentColor;
+  opacity: 0;
+}
+
+/* animación */
+.typewriter.animate::after {
+  animation: reveal var(--duration, 2s) steps(40, end) forwards;
+}
+
+.typewriter.animate::before {
+  animation: blink 0.7s infinite;
+  opacity: 1;
+}
+/* reveal */
+@keyframes reveal {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+/* cursor blink */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+.dark {
+  --bg-color: #0d1117;
+  --text-color: #ffffff;
+}
+
+/* CTA h3 styling - Matches site bold/modern aesthetic with reveal animation */
+.about-container h3 {
+  color: var(--text-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+}
+
+.about-container h3:hover {
+  color: #4ba26c;
+  transform: scale(1.05);
+}
+
+.about-container h3:active {
+  transform: scale(0.98);
+}
+
+/* Enhanced centering for h5 CTA - all screens */
+.about-container h5 {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+  width: fit-content;
+}
+
+/* CTA h5 styling - Matches site bold/modern aesthetic with reveal animation */
+.about-container h5 {
+  color: var(--text-color);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  letter-spacing: -0.025em;
+  margin-bottom: 2rem;
+}
+
+.about-container h5:hover {
+  color: #4ba26c;
+  transform: scale(1.05);
+}
+
+.about-container h5:active {
+  transform: scale(0.98);
+}
+
+.about-container h5.reveal {
+  transform: translateY(30px);
+}
+
+.about-container h5.reveal.active {
+  transform: translateY(0);
+}
+
+/* Ensure reveal animation works smoothly with Tailwind sizing */
+.about-container h3.reveal {
+  transform: translateY(30px);
+}
+
+.about-container h3.reveal.active {
+  transform: translateY(0);
+}
+
+

@@ -1,6 +1,6 @@
 ---
 /* Imports CardFlip component and scroll-reveal CSS styles */
-import CardFlip from "./Cardflip.astro";
+import CardFlip from "./CardFlip.astro";
 import "../styles/scroll-reveal.css";
 ---
 
@@ -37,12 +37,34 @@ import "../styles/scroll-reveal.css";
         card.classList.toggle("flipped");
 
         /* Toggles about info visibility if element exists */
-        const info = document.getElementById("about-info");
+        const info = card.closest(".about-container")?.querySelector(".about-info");
         if (info) {
           if (card.classList.contains("flipped")) {
             info.classList.add("show");
+
+            setTimeout(() => {
+              const texts = info.querySelectorAll(".typewriter");
+
+              texts.forEach((el, index) => {
+                const textLength = el.textContent.length;
+                const duration = textLength * 0.05;
+
+                setTimeout(() => {
+                  el.style.setProperty("--duration", `${duration}s`);
+                  el.classList.add("animate");
+                }, index * 500);
+              });
+            }, 400); // 👈 espera a que termine el flip
           } else {
             info.classList.remove("show");
+
+            // reset animación
+            const texts = info.querySelectorAll(".typewriter");
+            texts.forEach((el) => {
+              el.classList.remove("animate");
+              el.style.removeProperty("--duration");
+              void el.offsetWidth;
+            });
           }
         }
       });
@@ -63,42 +85,46 @@ import "../styles/scroll-reveal.css";
   >
     Sobre mí
   </h1>
-  <CardFlip />
-  <div class="about-info" id="about-info">
-    <h2
-      class="text-4xl md:text-5xl font-bold mt-0 mb-6"
-      data-translate
-      data-en="Frontend Developer"
-      data-es="Desarrollador Front-End"
-    >
-      Frontend Developer
-    </h2>
-    <p
-      class="text-2xl md:text-1xl font-width mt-0 mb-3"
-      data-translate
-      data-en="Frontend developer focused on creating modern, scalable, and accessible interfaces."
-      data-es="Soy un desarrollador Frontend enfocado en crear interfaces modernas, escalables y accesibles."
-    >
-      Soy un desarrollador Frontend enfocado en crear interfaces modernas,
-      escalables y accesibles.
-    </p>
-    <p
-      class="text-2xl md:text-1xl font-width mt-0 mb-3"
-      data-translate
-      data-en="Specializes in JavaScript, React, and Astro for fast optimized web apps."
-      data-es="Trabajo principalmente con JavaScript, React y Astro para construir aplicaciones web rápidas y optimizadas."
-    >
-      Trabajo principalmente con JavaScript, React y Astro para construir
-      aplicaciones web rápidas, optimizadas.
-    </p>
-    <p
-      class="text-2xl md:text-1xl font-width mt-0 mb-3"
-      data-translate
-      data-en="Self-taught, constantly learning new technologies through docs, courses, and projects."
-      data-es="También soy autodidacta y constantemente aprendo nuevas tecnologías a través de documentación, cursos y proyectos personales."
-    >
-      También soy autodidacta y constantemente aprendo nuevas tecnologías a
-      través de documentación, cursos y proyectos personales.
-    </p>
+  <div class="about-container">
+    <CardFlip />
+    <h5 class="reveal text-xl md:text-2xl font-bold text-center mt-8 mb-6 cursor-pointer mx-auto max-w-sm px-4" data-translate data-en="Click on the image" data-es="Has click en la imagen">Has click en la imagen</h5>
+    <div class="about-info" id="about-info">
+      <h2
+        class="text-4xl md:text-5xl font-bold mt-0 mb-6"
+        data-translate
+        data-en="Frontend Developer"
+        data-es="Desarrollador Front-End"
+      >
+        Frontend Developer
+      </h2>
+      <p
+        class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
+        data-translate
+        data-en="Frontend developer focused on creating modern, scalable, and accessible interfaces."
+        data-es="Soy un desarrollador Frontend enfocado en crear interfaces modernas, escalables y accesibles."
+      >
+        Soy un desarrollador Frontend enfocado en crear interfaces modernas,
+        escalables y accesibles.
+      </p>
+      <p
+        class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
+        data-translate
+        data-en="Specializes in JavaScript, React, and Astro for fast optimized web apps."
+        data-es="Trabajo principalmente con JavaScript, React y Astro para construir aplicaciones web rápidas y optimizadas."
+      >
+        Trabajo principalmente con JavaScript, React y Astro para construir
+        aplicaciones web rápidas, optimizadas.
+      </p>
+      <p
+        class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
+        data-translate
+        data-en="Self-taught, constantly learning new technologies through docs, courses, and projects."
+        data-es="También soy autodidacta y constantemente aprendo nuevas tecnologías a través de documentación, cursos y proyectos personales."
+      >
+        También soy autodidacta y constantemente aprendo nuevas tecnologías a
+        través de documentación, cursos y proyectos personales.
+      </p>
+    </div>
   </div>
 </section>
+
