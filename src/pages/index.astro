@@ -2,18 +2,15 @@
 import Layout from "../layouts/layout.astro";
 import Header from "../components/Header.astro";
 import TechstackCarousel from "../components/ui/TechstackCarousel.astro";
-import AboutMe from "../components/AboutMe.astro";
 import ScrollReveal from "../components/ScrollReveal.astro";
 ---
 
 <Layout title="Web Developer Profile">
+  <Header />
 
-<Header />
+  {/*<AboutMe />*/}
 
-{/*<AboutMe />*/}
+  <ScrollReveal />
 
-<ScrollReveal />
-
-<TechstackCarousel/>
-
+  <TechstackCarousel />
 </Layout>

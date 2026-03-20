@@ -1,63 +1,60 @@
 ---
-import Sidebar from '../components/Sidebar.astro';
-import Footer from '../components/Footer.astro';
-import BackToTop from '../components/BackToTop.astro';
-import '../styles/global.css';
+import Sidebar from "../components/Sidebar.astro";
+import Footer from "../components/Footer.astro";
+import BackToTop from "../components/BackToTop.astro";
+import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
 }
 
 const {
   title,
-description = 'Web Developer Portfolio - Showcasing projects and skills'
+  lang = "en",
+  description = "Web Developer Portfolio - Showcasing projects and skills",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es" id="html-lang">
+<html lang={Astro.props.lang || "en"} id="html-lang">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
+    <meta name="description" content={description} />
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
 
-<meta name="description" content={description} />
+    <script is:inline>
+      (function () {
+        // Initialize language first (default to 'en')
+        let storedLang = localStorage.getItem("lang");
+        if (!storedLang) {
+          storedLang = "en";
+          localStorage.setItem("lang", storedLang);
+        }
+        document.documentElement.lang = storedLang;
 
-<title>{title}</title>
+        /* Initializes dark mode from localStorage on page load */
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme === "dark" || !storedTheme) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
 
-<script is:inline>
-(function () {
+  <body class="min-h-screen flex flex-col transition-colors duration-300">
+    <Sidebar />
 
+    <main class="flex-1">
+      <slot />
+    </main>
 
-  /* Initializes dark mode from localStorage on page load */
-  const storedTheme = localStorage.getItem('theme');
+    <Footer />
 
-
-if (storedTheme === "dark" || !storedTheme) {
-document.documentElement.classList.add("dark");
-}
-
-})();
-</script>
-
-</head>
-
-<body class="min-h-screen flex flex-col transition-colors duration-300">
-
-<Sidebar />
-
-<main class="flex-1">
-
-<slot />
-
-</main>
-
-<Footer />
-
-<BackToTop />
-
-</body>
-
+    <BackToTop />
+  </body>
 </html>

@@ -37,7 +37,9 @@ import "../styles/scroll-reveal.css";
         card.classList.toggle("flipped");
 
         /* Toggles about info visibility if element exists */
-        const info = card.closest(".about-container")?.querySelector(".about-info");
+        const info = card
+          .closest(".about-container")
+          ?.querySelector(".about-info");
         if (info) {
           if (card.classList.contains("flipped")) {
             info.classList.add("show");
@@ -54,7 +56,7 @@ import "../styles/scroll-reveal.css";
                   el.classList.add("animate");
                 }, index * 500);
               });
-            }, 400); // 👈 espera a que termine el flip
+            }, 400);
           } else {
             info.classList.remove("show");
 
@@ -87,7 +89,14 @@ import "../styles/scroll-reveal.css";
   </h1>
   <div class="about-container">
     <CardFlip />
-    <h5 class="reveal text-xl md:text-2xl font-bold text-center mt-8 mb-6 cursor-pointer mx-auto max-w-sm px-4" data-translate data-en="Click on the image" data-es="Has click en la imagen">Has click en la imagen</h5>
+    <h5
+      class="reveal text-xl md:text-2xl font-bold text-center mt-8 mb-6 cursor-pointer mx-auto max-w-sm px-4"
+      data-translate
+      data-en="Click on the image"
+      data-es="Has click en la imagen"
+    >
+      Has click en la imagen
+    </h5>
     <div class="about-info" id="about-info">
       <h2
         class="text-4xl md:text-5xl font-bold mt-0 mb-6"
@@ -100,31 +109,67 @@ import "../styles/scroll-reveal.css";
       <p
         class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
         data-translate
-        data-en="Frontend developer focused on creating modern, scalable, and accessible interfaces."
-        data-es="Soy un desarrollador Frontend enfocado en crear interfaces modernas, escalables y accesibles."
+        data-en="Specialized in web and mobile applications. Experienced in React, HTML,
+        CSS, React Native, and Astro. Building modern interfaces with an
+        emphasis on visual consistency, performance, and accessibility."
+        data-es="Especializado en aplicaciones web y móviles. Experiencia en React, HTML, CSS, React Native y Astro. Construcción de interfaces modernas con énfasis en consistencia visual, rendimiento y accesibilidad."
       >
-        Soy un desarrollador Frontend enfocado en crear interfaces modernas,
-        escalables y accesibles.
+        Specialized in web and mobile applications. Experienced in React, HTML,
+        CSS, React Native, and Astro. Building modern interfaces with an
+        emphasis on visual consistency, performance, and accessibility.
       </p>
       <p
         class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
         data-translate
-        data-en="Specializes in JavaScript, React, and Astro for fast optimized web apps."
-        data-es="Trabajo principalmente con JavaScript, React y Astro para construir aplicaciones web rápidas y optimizadas."
+        data-en="On the web, implementation of reusable components, efficient state
+        management, and rendering optimization. Use of Astro for
+        content-oriented architectures with minimal client-side JavaScript."
+        data-es="En web, implementación de componentes reutilizables, manejo eficiente del estado y optimización de renderizado. Uso de Astro para arquitecturas orientadas a contenido con mínima carga de JavaScript en cliente."
       >
-        Trabajo principalmente con JavaScript, React y Astro para construir
-        aplicaciones web rápidas, optimizadas.
+        On the web, implementation of reusable components, efficient state
+        management, and rendering optimization. Use of Astro for
+        content-oriented architectures with minimal client-side JavaScript.
       </p>
       <p
         class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
         data-translate
-        data-en="Self-taught, constantly learning new technologies through docs, courses, and projects."
-        data-es="También soy autodidacta y constantemente aprendo nuevas tecnologías a través de documentación, cursos y proyectos personales."
+        data-en=" On mobile, development of cross-platform applications with React Native,
+        prioritizing native performance and interface consistency"
+        data-es="En móvil, desarrollo de aplicaciones multiplataforma con React Native, priorizando rendimiento nativo y coherencia de interfaz."
       >
-        También soy autodidacta y constantemente aprendo nuevas tecnologías a
-        través de documentación, cursos y proyectos personales.
+        On mobile, development of cross-platform applications with React Native,
+        prioritizing native performance and interface consistency
+      </p>
+      <p
+        class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
+        data-translate
+        data-en="Focus on scalable systems: separation of responsibilities, reduction of
+        unnecessary complexity, and elimination of redundant state."
+        data-es="Enfoque en sistemas escalables: separación de responsabilidades, reducción de complejidad innecesaria y eliminación de estado redundante."
+      >
+        Focus on scalable systems: separation of responsibilities, reduction of
+        unnecessary complexity, and elimination of redundant state.
+      </p>
+
+      <p
+        class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
+        data-translate
+        data-en="Active learning in AI-assisted development, continuous adaptation to new
+        practices."
+        data-es="Aprendizaje activo en desarrollo asistido por IA, adaptación continua a nuevas prácticas."
+      >
+        Active learning in AI-assisted development, continuous adaptation to new
+        practices.
+      </p>
+
+      <p
+        class="text-2xl md:text-1xl font-width mt-0 mb-3 typewriter"
+        data-translate
+        data-en="Focus on clean, maintainable, predictable, and optimized code."
+        data-es="Orientación a código limpio, mantenible, predecible y optimizado."
+      >
+        Focus on clean, maintainable, predictable, and optimized code.
       </p>
     </div>
   </div>
 </section>
-

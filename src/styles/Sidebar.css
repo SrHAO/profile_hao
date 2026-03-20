@@ -2,7 +2,7 @@
 .sidebar-checkbox {
   position: absolute;
   opacity: 0;
-  width: 0;
+  border-top: 2px solid;
   height: 0;
   pointer-events: none;
 }

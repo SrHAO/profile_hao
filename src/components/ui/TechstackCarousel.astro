@@ -1,5 +1,5 @@
 ---
-import '../../styles/TechstackCarousel.css';
+import "../../styles/TechstackCarousel.css";
 
 import {
   siHtml5,
@@ -9,8 +9,8 @@ import {
   siAstro,
   siTailwindcss,
   siGit,
-  siGithub
-} from 'simple-icons/icons';
+  siGithub,
+} from "simple-icons/icons";
 
 const technologies = [
   siHtml5,
@@ -20,40 +20,30 @@ const technologies = [
   siAstro,
   siTailwindcss,
   siGit,
-  siGithub
+  siGithub,
 ];
 ---
 
 <section class="tech-stack">
+  <h2 class="tech-title">Technologies I Work With</h2>
 
-<h2 class="tech-title">
-Technologies I Work With
-</h2>
-
-<div class="tech-carousel">
-
-<div class="tech-track">
-
-{
-[...technologies, ...technologies].map((tech) => (
-
-<div class={`tech-icon ${tech.title === 'GitHub' ? 'github-purple' : ''}`}>
-
-<svg
-viewBox="0 0 24 24"
-width="48"
-height="48"
-fill={`#${tech.hex}`}
-set:html={tech.svg}
-/>
-
-</div>
-
-))
-}
-
-</div>
-
-</div>
-
+  <div class="tech-carousel">
+    <div class="tech-track">
+      {
+        [...technologies, ...technologies].map((tech) => (
+          <div
+            class={`tech-icon ${tech.title === "GitHub" ? "github-purple" : ""}`}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="48"
+              height="48"
+              fill={`#${tech.hex}`}
+              set:html={tech.svg}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </section>

@@ -12,12 +12,11 @@ import "../styles/LanguageToggle.css";
 
     if (!button) return;
 
-    let lang =
-      localStorage.getItem("lang") || document.documentElement.lang || "es";
+    let lang = localStorage.getItem("lang") || "en";
 
     function updateLanguage() {
       document.documentElement.lang = lang;
-      button.textContent = lang === "en" ? "🌐 EN" : "🌐 ES";
+      button.textContent = lang === "en" ? "🌐 ES" : "🌐 EN";
 
       document.querySelectorAll("[data-translate]").forEach((el) => {
         const element = el as HTMLElement;
@@ -29,7 +28,7 @@ import "../styles/LanguageToggle.css";
       });
     }
 
-    button.addEventListener("click", () => {
+    button!.addEventListener("click", () => {
       lang = lang === "en" ? "es" : "en";
       localStorage.setItem("lang", lang);
       updateLanguage();

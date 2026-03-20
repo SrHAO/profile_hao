@@ -1,49 +1,55 @@
 ---
 import Layout from "../layouts/layout.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
-import "../styles/proyect.css"
+import "../styles/proyect.css";
 
 const projectImages = [
   {
     src: "https://picsum.photos/1200/675?random=1",
     alt: "Project 1",
     title: "Project One",
-    description: "A modern web application built with React and Node.js"
+    description: "A modern web application built with React and Node.js",
   },
   {
     src: "https://picsum.photos/1200/675?random=2",
     alt: "Project 2",
     title: "Project Two",
-    description: "E-commerce platform with payment integration"
+    description: "E-commerce platform with payment integration",
   },
   {
     src: "https://picsum.photos/1200/675?random=3",
     alt: "Project 3",
     title: "Project Three",
-    description: "Portfolio website with animations"
+    description: "Portfolio website with animations",
   },
   {
     src: "https://picsum.photos/1200/675?random=4",
     alt: "Project 4",
     title: "Project Four",
-    description: "Mobile-first responsive design"
+    description: "Mobile-first responsive design",
   },
   {
     src: "https://picsum.photos/1200/675?random=5",
     alt: "Project 5",
     title: "Project Five",
-    description: "Dashboard with data visualization"
-  }
+    description: "Dashboard with data visualization",
+  },
 ];
 ---
 
 <Layout title="Projects - Web Developer Profile">
-<div class="container mx-auto px-4 md:px-8 lg:px-16 py-20 max-w-7xl">
-    <h1 class="proyects-title" data-translate data-en="Projects" data-es="Proyectos">Proyects</h1>
-    
+  <div class="container mx-auto px-4 md:px-8 lg:px-16 py-20 max-w-7xl">
+    <h1
+      class="proyects-title"
+      data-translate
+      data-en="Projects"
+      data-es="Proyectos"
+    >
+      Proyects
+    </h1>
+
     <div class="carousel-wrapper">
       <ImageCarousel images={projectImages} />
     </div>
   </div>
 </Layout>
-
