@@ -11,7 +11,7 @@
   display: block;
 }
 
-/* Texto oculto */
+/* Hidden text */
 .about-content {
   position: absolute;
   inset: 0;
@@ -31,7 +31,7 @@
   border-radius: 16px;
 }
 
-/* Cuando haces click */
+/* On click */
 .about-card.active .about-content {
   opacity: 1;
   transform: scale(1);

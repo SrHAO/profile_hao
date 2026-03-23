@@ -1,6 +1,4 @@
-/* =========================
-ABOUT CONTAINER
-========================= */
+/* ABOUT CONTAINER */
 
 .about-container {
   padding: clamp(80px, 10vh, 120px) 20px 60px;
@@ -11,9 +9,7 @@ ABOUT CONTAINER
   align-items: center;
 }
 
-/* =========================
-TITLE
-========================= */
+/* TITLE */
 
 .about-title {
   font-size: clamp(2rem, 4vw, 3rem);
@@ -25,9 +21,7 @@ TITLE
   margin-bottom: 2.5rem;
 }
 
-/* =========================
-CONTENT WRAPPER
-========================= */
+/* CONTENT WRAPPER */
 
 .about-content {
   width: 100%;
@@ -39,9 +33,7 @@ CONTENT WRAPPER
   gap: 3rem;
 }
 
-/* =========================
-SECTION BASE
-========================= */
+/* SECTION BASE */
 
 .about-section {
   background: rgba(255, 255, 255, 0.04);
@@ -53,9 +45,7 @@ SECTION BASE
   width: 100%;
 }
 
-/* =========================
-SECTION TITLES
-========================= */
+/* SECTION TITLES */
 
 .about-section h2 {
   font-size: clamp(1.4rem, 2vw, 1.8rem);
@@ -67,9 +57,7 @@ SECTION TITLES
   text-align: center;
 }
 
-/* =========================
-PARAGRAPHS
-========================= */
+/* PARAGRAPHS */
 
 .about-section p {
   color: #9ca3af;
@@ -83,9 +71,7 @@ PARAGRAPHS
   margin: 0 auto;
 }
 
-/* =========================
-SKILLS GRID
-========================= */
+/* SKILLS GRID */
 
 .skills-grid {
 
@@ -125,9 +111,7 @@ SKILLS GRID
 
 }
 
-/* =========================
-EXPERIENCE
-========================= */
+/* EXPERIENCE */
 
 .experience-item {
 
@@ -163,9 +147,7 @@ EXPERIENCE
 
 }
 
-/* =========================
-TABLET
-========================= */
+/* TABLET */
 
 @media (max-width: 900px) {
 
@@ -179,9 +161,7 @@ TABLET
 
 }
 
-/* =========================
-MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -205,9 +185,7 @@ MOBILE
 
 }
 
-/* =========================
-SMALL MOBILE
-========================= */
+/* SMALL MOBILE */
 
 @media (max-width: 420px) {
 

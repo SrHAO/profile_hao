@@ -22,7 +22,7 @@
   padding: 0 20px;
 }
 
-/* Responsive: on smaller screens, reduce margin */
+/* Responsive: on smaller screens */
 @media (max-width: 1024px) {
   .proyects-title {
     margin-left: 0;

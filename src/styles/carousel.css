@@ -89,7 +89,7 @@
   opacity: 0.95;
 }
 
-/* Ultra-responsive breakpoints */
+/* Responsive breakpoints */
 @media (max-width: 480px) {
   .carousel-slide img {
     min-height: 250px;

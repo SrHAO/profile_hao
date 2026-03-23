@@ -12,13 +12,13 @@ const color = `#${icon.hex}`;
 />
 
 <style>
-  /* Dark mode: colores originales para todos excepto GitHub */
+  /* Dark mode */
   html.dark .tech-icon:not(.github\:true) {
     filter: brightness(0) saturate(100%) invert(95%) sepia(6%) saturate(99%)
       hue-rotate(250deg) brightness(107%) contrast(101%);
   }
 
-  /* GitHub mantiene color original en dark */
+  /* GitHub */
   html.dark .tech-icon.github\\:true {
     filter: none;
   }

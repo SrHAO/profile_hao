@@ -28,7 +28,7 @@ html.dark .footer {
   padding: 2.5rem 20px;
 }
 
-/* 🔥 GRID PRINCIPAL (FIX ALIGNMENT) */
+/*  GRID PRINCIPAL (FIX ALIGNMENT) */
 .footer-content {
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -37,7 +37,7 @@ html.dark .footer {
   width: 100%;
 }
 
-/* COLUMNAS */
+/* COLUMNS */
 .footer-left,
 .footer-center,
 .footer-right {
@@ -46,12 +46,12 @@ html.dark .footer {
   min-height: 120px;
 }
 
-/* IZQUIERDA */
+/* LEFT */
 .footer-left {
   justify-content: flex-start;
 }
 
-/* CENTRO */
+/* CENTER */
 .footer-center {
   flex-direction: column;
   align-items: flex-start;
@@ -59,12 +59,12 @@ html.dark .footer {
   text-align: left;
 }
 
-/* DERECHA */
+/* RIGHT */
 .footer-right {
   justify-content: flex-end;
 }
 
-/* 🔥 TITULO CONTACT (MEJORADO) */
+/* TITLE CONTACT */
 .contact-title {
   font-size: 1.6rem;
   font-weight: 700;
@@ -73,7 +73,7 @@ html.dark .footer {
   position: relative;
 }
 
-/* Línea decorativa */
+/* DECORATIVE LINE */
 .contact-title::after {
   content: "";
   display: block;
@@ -101,7 +101,7 @@ html.dark .footer {
   opacity: 0.85;
 }
 
-/* ICONOS */
+/* ICONS */
 .social-links-group {
   display: flex;
   gap: 1.2rem;
@@ -129,7 +129,7 @@ html.dark .footer {
   transform: translateY(-4px);
 }
 
-/* Colores hover */
+/* Colors hover */
 .social-link.linkedin:hover {
   color: #0A66C2;
   background: rgba(10, 102, 194, 0.15);

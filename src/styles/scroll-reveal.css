@@ -52,14 +52,14 @@
 .reveal:nth-child(3) { transition-delay: 0.2s; }
 .reveal:nth-child(4) { transition-delay: 0.3s; }
 
-/* Profile flip container - 3D perspective for flip effect */
+/* Profile flip container */
 .profile-flip-container {
   perspective: 1200px;
   display: flex;
   justify-content: center;
 }
 
-/* Profile flip card - Main card container with 3D transform */
+/* Profile flip card */
 .profile-flip {
   width: 520px;
   height: 650px;
@@ -71,7 +71,7 @@
   will-change: transform;
 }
 
-/* Flipped state - Rotates card 180 degrees on Y axis */
+/* Flipped state */
 .profile-flip.flipped {
   transform: rotateY(180deg) scale(1.02);
 }
@@ -85,7 +85,7 @@
   transform: scale(1.03);
 }
 
-/* Front and back faces - Hidden when facing away */
+/* Front and back faces */
 .profile-front, .profile-back {
   position: absolute;
   width: 100%;
@@ -101,7 +101,7 @@
   background: white;
 }
 
-/* Profile image - Full cover, now perfectly centered for large screens */
+/* Profile image */
 .profile-front img {
   width: 100%;
   height: 100%;
@@ -109,7 +109,7 @@
   object-position: 50% 50%;
 }
 
-/* Back face styling - Gradient background with centered text */
+/* Back face styling */
 .profile-back {
   background: linear-gradient(135deg, #2b4cdf 0%, #4ba26c 100%);
   color: white;
@@ -191,7 +191,7 @@
   color: var(--text-color);
 }
 
-/* capa que cubre el texto */
+/* layer that covers the text */
 .typewriter::after {
   content: "";
   position: absolute;
@@ -241,7 +241,7 @@
   --text-color: #ffffff;
 }
 
-/* CTA h3 styling - Matches site bold/modern aesthetic with reveal animation */
+/* CTA h3 styling */
 .about-container h3 {
   color: var(--text-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -259,7 +259,7 @@
   transform: scale(0.98);
 }
 
-/* Enhanced centering for h5 CTA - all screens */
+/* Enhanced centering for h5 CTA */
 .about-container h5 {
   display: block !important;
   margin-left: auto !important;
@@ -268,7 +268,7 @@
   width: fit-content;
 }
 
-/* CTA h5 styling - Matches site bold/modern aesthetic with reveal animation */
+/* CTA h5 styling */
 .about-container h5 {
   color: var(--text-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

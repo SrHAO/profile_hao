@@ -61,11 +61,11 @@ transform:translateX(-50%);
 
 }
 
-/* Index p darker text - modo claro oscuro */
+/* Index p darker text */
 .index-p-text {
-  color: #1f2937 !important; /* gray-800 darker */
+  color: #1f2937 !important; 
 }
 
 .dark .index-p-text {
-  color: #f3f4f6 !important; /* gray-100 light */
+  color: #f3f4f6 !important;
 }
