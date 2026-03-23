@@ -9,6 +9,6 @@ import SkillCard from "../ui/SkillCard.astro";
   </h2>
 
   <div class="skills-grid">
-    {skills.map((skill) => <SkillCard name={skill.name} icon={skill.icon} />)}
+{skills.map((skill) => <SkillCard name={skill.name} icon={skill.icon} descriptionEN={skill.descriptionEN} descriptionES={skill.descriptionES} />)}
   </div>
 </section>

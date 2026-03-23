@@ -1,13 +1,57 @@
 ---
 import TechIcon from "./TechIcon.astro";
+import '../../styles/skills.css';
 
-const { name, icon } = Astro.props;
+const { name, icon, descriptionEN, descriptionES } = Astro.props;
 ---
 
 <div class="skill-card">
-  <TechIcon icon={icon} />
 
-  <span class="skill-name">
-    {name}
-  </span>
+  <div class='skill-flip-container reveal'>
+    <div class='skill-flip'>
+
+      <!--Front -->
+      <div class='skill-front'>
+        <TechIcon icon={icon}/>
+        <span class='skill-name'>{name}</span>
+      </div>
+
+      <!--Back -->
+      <div class='skill-back'>
+        <p class='skill-description' data-description-en={JSON.stringify(descriptionEN || '')} data-description-es={JSON.stringify(descriptionES || '')}>
+          {descriptionEN || descriptionES || ''}
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script is:inline>
+    if(!window._skillsFlipInit) {
+      window._skillsFlipInit = true;
+
+      function updateSkillLang() {
+        const lang = document.documentElement.lang || localStorage.getItem('lang') || 'en';
+        document.querySelectorAll('.skill-description').forEach(p => {
+          const en = JSON.parse(p.dataset.descriptionEn || '""');
+          const es = JSON.parse(p.dataset.descriptionEs || '""');
+          p.textContent = lang === 'es' ? es : en;
+        });
+      }
+
+      // Flip on click
+      document.addEventListener('click', (e) => {
+        const card = e.target.closest('.skill-flip');
+        if(card) card.classList.toggle('flipped');
+      });
+
+      // Initial
+      updateSkillLang();
+
+      // Language changes
+      document.addEventListener('langchange', updateSkillLang);
+      new MutationObserver(updateSkillLang).observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+    }
+  </script>
+
 </div>
