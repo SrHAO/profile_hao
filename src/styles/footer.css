@@ -5,7 +5,7 @@
   --footer-border: rgba(0, 0, 0, 0.08);
   --footer-link: #64748b;
   --footer-link-border: rgba(0, 0, 0, 0.1);
-  
+
   background: var(--footer-bg);
   color: var(--footer-text);
   border-top: 1px solid var(--footer-border);
@@ -26,118 +26,110 @@ html.dark .footer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2.5rem 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
 }
 
-/* Content */
+/* 🔥 GRID PRINCIPAL (FIX ALIGNMENT) */
 .footer-content {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
+  gap: 2rem;
   width: 100%;
-  min-height: 140px;
 }
 
-@media (max-width: 1024px) {
-  .footer-content {
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-content {
-    gap: 1.5rem;
-  }
-}
-
-/* Icons Row - Main Flex Layout */
-.footer-icons-row {
-  width: 100%;
+/* COLUMNAS */
+.footer-left,
+.footer-center,
+.footer-right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
+  min-height: 120px;
 }
 
-/* Created Section */
+/* IZQUIERDA */
+.footer-left {
+  justify-content: flex-start;
+}
+
+/* CENTRO */
+.footer-center {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+}
+
+/* DERECHA */
+.footer-right {
+  justify-content: flex-end;
+}
+
+/* 🔥 TITULO CONTACT (MEJORADO) */
+.contact-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+/* Línea decorativa */
+.contact-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: #3b82f6;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+/* CONTACT INFO */
 .created-section {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  text-align: left;
 }
 
-.created-by, .location, .cell {
-  font-size: 1.25rem;
+.created-by,
+.location,
+.cell {
+  font-size: 1rem;
   font-weight: 500;
   color: var(--footer-text);
   line-height: 1.45;
+  opacity: 0.85;
 }
 
-/* Contact Title */
-.contact-title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: var(--footer-text);
-  margin-bottom: 1rem;
-  text-align: left;
-}
-
-/* Copyright */
-.copyright-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  width: 100%;
-  text-align: center;
-}
-
-.copyright {
-  font-size: 0.9rem;
-  margin: 0;
-  color: var(--footer-text);
-  font-weight: 500;
-  opacity: 0.9;
-}
-
-/* Social Links */
+/* ICONOS */
 .social-links-group {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.social-link svg {
-  width: 50px;
-  height: 50px;
+  gap: 1.2rem;
 }
 
 .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   color: var(--footer-link);
   transition: all 0.3s ease;
-  border-radius: 20px;
+  border-radius: 18px;
   border: 1px solid var(--footer-link-border);
   text-decoration: none;
-  font-size: 1.25rem;
+}
+
+.social-link svg {
+  width: 40px;
+  height: 40px;
 }
 
 .social-link:hover {
   transform: translateY(-4px);
 }
 
+/* Colores hover */
 .social-link.linkedin:hover {
   color: #0A66C2;
   background: rgba(10, 102, 194, 0.15);
@@ -145,13 +137,9 @@ html.dark .footer {
 }
 
 .social-link.github:hover {
-  color: #3e11a7;
+  color: #8b5cf6;
   background: rgba(139, 92, 246, 0.15);
   box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
-}
-
-html.dark .social-link.github:hover {
-  color: #a78bfa !important;
 }
 
 .social-link.email:hover {
@@ -166,67 +154,55 @@ html.dark .social-link.github:hover {
   box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .footer-container {
-    padding: 2rem 15px;
-    gap: 1.5rem;
-  }
-  
-  .social-links-group {
-    gap: 2rem;
-  }
+/* LOGO */
+.footer-logo {
+  color: rgb(34, 153, 23);
+  width: 90px;
+  height: 90px;
+  transition: transform 0.3s ease;
+}
 
-    .footer-content {
-    flex-direction: column;
-    gap: 2rem;
+.footer-logo:hover {
+  transform: scale(1.1);
+  color: #151616;
+}
+
+html.dark .footer-logo {
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+/* COPYRIGHT */
+.copyright-section {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
 
   .footer-left,
   .footer-center,
   .footer-right {
     justify-content: center;
+    align-items: center;
+  }
+
+  .footer-center {
+    align-items: center;
   }
 }
 
-@media (max-width: 600px) {
-  .footer-icons-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1rem;
-  }
-  
-  .created-section {
-    order: -1;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-container {
-    padding: 2.5rem 10px;
-  }
-  
-  .social-links-group {
-    gap: 2.75rem;
-    justify-content: center;
-  }
-  
-  .social-link {
-    width: 62px;
-    height: 62px;
-    font-size: 2.125rem;
-  }
-  
-  .copyright {
-    font-size: 0.9rem;
-  }
-  
-  .created-by, .location, .cell {
-    font-size: 1rem;
-  }
-}
-
-/* Sticky Footer Support */
+/* Sticky Footer */
 body {
   min-height: 100vh;
   display: flex;
@@ -236,75 +212,3 @@ body {
 main {
   flex: 1;
 }
-
-.footer-left,
-.footer-center,
-.footer-right {
-  display: flex;
-  align-items: center;
-}
-
-/* IZQUIERDA */
-.footer-left {
-  justify-content: flex-start;
-  margin-right: auto;
-  padding-left: 1rem;
-}
-
-@media (min-width: 1200px) {
-  .footer-left {
-    padding-left: 2rem;
-  }
-}
-
-/* CENTRO */
-.footer-center {
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  flex: 1;
-}
-
-/* DERECHA */
-.footer-right {
-  justify-content: flex-end;
-  margin-left: auto;
-  padding-right: 1rem;
-}
-
-@media (min-width: 1200px) {
-  .footer-right {
-    padding-right: 2rem;
-  }
-}
-
-@media (min-width: 1400px) {
-  .footer-center {
-    max-width: 400px;
-  }
-}
-
-/* LOGO */
-.footer-logo {
-  color: rgb(34, 153, 23);
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.footer-logo:hover {
-  transform: scale(1.1);
-  color:#151616;
-}
-
-html.dark .footer-logo {
-  filter: brightness(0) saturate(100%) invert(100%);
-}
-
-
-/* Dark mode social links */
-html.dark .social-link {
-  border-color: var(--footer-link-border);
-}
-
