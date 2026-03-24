@@ -111,7 +111,7 @@
 
 /* Back face styling */
 .profile-back {
-  background: linear-gradient(135deg, #2b4cdf 0%, #4ba26c 100%);
+  background: linear-gradient(135deg, #1a1a1b 0%, #570505 100%);
   color: white;
   display: flex;
   align-items: center;

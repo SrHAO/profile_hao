@@ -7,15 +7,13 @@ import "../styles/Header.css";
     <div>
       <video
         class="hero-video"
-        autoplay
         muted
         loop
         playsinline
-        preload="metadata"
+        preload="none"
         poster="/favicon.svg"
-      >
-        <source src="/videos/NavVid.mp4" type="video/mp4" />
-      </video>
+        data-src="/videos/NavVid01.mp4"
+      ></video>
     </div>
   </header>
 
@@ -30,3 +28,31 @@ import "../styles/Header.css";
     </h1>
   </div>
 </section>
+
+<!-- SCRIPT -->
+<script is:inline>
+  const video = document.querySelector('.hero-video');
+
+  if (video) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+          // Assign video when it enters the screen
+          video.src = video.dataset.src;
+
+          // Force autoplay on mobile devices
+          video.muted = true;
+          video.play().catch(() => {});
+
+          // Stop observing (better performance)
+          observer.disconnect();
+        }
+      });
+    }, {
+      threshold: 0.3 // It activates when 30% of the video is visible
+    });
+
+    observer.observe(video);
+  }
+</script>

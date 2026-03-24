@@ -114,15 +114,31 @@ html.dark .footer {
   width: 80px;
   height: 80px;
   color: var(--footer-link);
-  transition: all 0.3s ease;
   border-radius: 18px;
   border: 1px solid var(--footer-link-border);
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.social-link svg {
+.social-link svg,
+.social-link img {
   width: 40px;
   height: 40px;
+  filter:brightness(0) invert(60%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+
+}
+
+html.dark .social-link img {
+  filter: brightness(0) invert(70%);
+}
+
+.social-link:hover img{
+  filter:none;
+}
+
+html.dark .social-link:hover img {
+  filter: none;
 }
 
 .social-link:hover {
@@ -137,7 +153,7 @@ html.dark .footer {
 }
 
 .social-link.github:hover {
-  color: #8b5cf6;
+  color: #4f1aca;
   background: rgba(139, 92, 246, 0.15);
   box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
 }
@@ -212,3 +228,4 @@ body {
 main {
   flex: 1;
 }
+
