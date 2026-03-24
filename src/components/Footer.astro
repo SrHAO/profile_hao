@@ -5,7 +5,7 @@ import "../styles/footer.css";
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-content">
-      <!-- Logo izquierda clickable home -->
+      <!-- Logo -->
       <div class="footer-left">
         <a href="/" aria-label="Home">
           <svg
@@ -69,8 +69,8 @@ import "../styles/footer.css";
         </a>
       </div>
 
-      <!-- Contact cencenter -->
-<div class="footer-center">
+      <!-- Contact center -->
+      <div class="footer-center">
         <h4
           class="contact-title"
           data-translate
@@ -78,7 +78,6 @@ import "../styles/footer.css";
           data-es="Contacto"
         >
           Contact
-
         </h4>
         <div class="footer-icons-row">
           <div class="created-section">
@@ -100,23 +99,15 @@ import "../styles/footer.css";
               >
                 Location: Mexico City
               </li>
-
-              <li
-                class="cell"
-                data-translate
-                data-en="Cell: +52 5543547891"
-                data-es="Cel: +52 5543547891"
-              >
-                Cell: +52 5543547891
-              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <!-- Social icons right - unics -->
+      <!-- Social icons right -->
       <div class="footer-right">
         <div class="social-links-group">
+          
           <a
             href="https://www.linkedin.com/in/alan-navarrete/"
             target="_blank"
@@ -124,7 +115,13 @@ import "../styles/footer.css";
             aria-label="LinkedIn"
             class="social-link linkedin"
           >
-            <img src="/images/linkedin.svg" alt="LinkedIn" width="40" height="40" class="w-10 h-10">
+            <img
+              src="/images/linkedin.svg"
+              alt="LinkedIn"
+              width="40"
+              height="40"
+              class="w-10 h-10"
+            />
           </a>
           <a
             href="https://github.com/SrHAO"
@@ -133,23 +130,41 @@ import "../styles/footer.css";
             aria-label="GitHub"
             class="social-link github"
           >
-            <img src="/images/github.svg" alt="GitHub" width="40" height="40" class="w-10 h-10">
+            <img
+              src="/images/github.svg"
+              alt="GitHub"
+              width="40"
+              height="40"
+              class="w-10 h-10"
+            />
           </a>
           <a
-            href="mailto:al.yoab.nav.sa@gmail.com"
+            id="email-link"
             aria-label="Email"
             class="social-link email"
           >
-            <img src="/images/gmail.svg" alt="Gmail" width="40" height="40" class="w-10 h-10">
+            <img
+              src="/images/gmail.svg"
+              alt="Gmail"
+              width="40"
+              height="40"
+              class="w-10 h-10"
+            />
           </a>
           <a
             href="https://wa.me/5543547891?text=Hola%20quiero%20contactarte"
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             aria-label="WhatsApp"
             class="social-link whatsapp"
           >
-            <img src="/images/whatsapp.svg" alt="WhatsApp" width="40" height="40" class="w-10 h-10">
+            <img
+              src="/images/whatsapp.svg"
+              alt="WhatsApp"
+              width="40"
+              height="40"
+              class="w-10 h-10"
+            />
           </a>
         </div>
       </div>
@@ -169,3 +184,14 @@ import "../styles/footer.css";
   </div>
 </footer>
 
+<script>
+  const user = "al.yoab.nav.sa";
+  const domain = "gmail";
+  const tld = 'com'
+
+  const emailLink = document.getElementById("email-link");
+
+  if (emailLink) {
+    emailLink.href = `mailto:${user}@${domain}.${tld}`;
+  }
+</script>
