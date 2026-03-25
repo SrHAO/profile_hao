@@ -16,7 +16,7 @@ const { images } = Astro.props;
     src: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80',
     alt: 'Coming Soon',
     title: 'Coming Soon',
-    description: '¡Más proyectos increíbles próximamente!'
+    description: 'More amazing projects coming soon!'
   };
 
   const allImages = [...images, COMING_SOON];
@@ -32,20 +32,20 @@ const { images } = Astro.props;
           <div class="carousel-slide">
             <img src={image.src} alt={image.alt} />
             <div class="carousel-caption">
-              {image.title && (
+{image.title && (
                 <h2
                   data-translate
                   data-en={image.title}
-                  data-es={image.title.replace("Project", "Proyecto")}
+                  data-es={image.title === 'Coming Soon' ? 'Próximamente' : image.title.replace("Project", "Proyecto")}
                 >
                   {image.title}
                 </h2>
               )}
-              {image.description && (
+{image.description && (
                 <p
                   data-translate
                   data-en={image.description}
-                  data-es={image.description
+                  data-es={image.description.includes('coming soon') ? '¡Más proyectos increíbles próximamente!' : image.description
                     .replace("platform", "plataforma")
                     .replace("website", "sitio web")
                     .replace("design", "diseño")}
