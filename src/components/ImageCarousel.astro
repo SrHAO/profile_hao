@@ -11,6 +11,15 @@ interface Props {
 }
 
 const { images } = Astro.props;
+
+  const COMING_SOON = {
+    src: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80',
+    alt: 'Coming Soon',
+    title: 'Coming Soon',
+    description: '¡Más proyectos increíbles próximamente!'
+  };
+
+  const allImages = [...images, COMING_SOON];
 ---
 
 <div class="carousel">
@@ -19,7 +28,7 @@ const { images } = Astro.props;
   <div class="carousel-window">
     <div class="carousel-track">
       {
-        images.map((image) => (
+        allImages.map((image) => (
           <div class="carousel-slide">
             <img src={image.src} alt={image.alt} />
             <div class="carousel-caption">
@@ -37,7 +46,6 @@ const { images } = Astro.props;
                   data-translate
                   data-en={image.description}
                   data-es={image.description
-                    //.replace("with", "con")
                     .replace("platform", "plataforma")
                     .replace("website", "sitio web")
                     .replace("design", "diseño")}
@@ -87,4 +95,3 @@ const { images } = Astro.props;
     });
   });
 </script>
-

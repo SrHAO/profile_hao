@@ -1,14 +1,12 @@
 ---
-import '../styles/cv-button.css'
+import "../styles/cv-button.css";
 
-const {
-    variant = 'primary'
-} = Astro.props;
+const { variant = "primary" } = Astro.props;
 ---
 
 <a
   href="#"
-  class={`cv-btn ${variant === 'outline' ? 'cv-btn-outline' : ''}`}
+  class={`cv-btn ${variant === "outline" ? "cv-btn-outline" : ""}`}
   data-en="/CV/Alan_Navarrete_En.pdf"
   data-es="/CV/Alan_Navarrete_Es.pdf"
   data-name-en="CV_Alan_Navarrete_EN.pdf"
@@ -21,32 +19,33 @@ const {
 
 <script>
   function initCVButton() {
-    const btn = document.querySelector('.cv-btn') as HTMLAnchorElement;
+    const btn = document.querySelector(".cv-btn") as HTMLAnchorElement;
     if (!btn) return;
-    
-    const lang = localStorage.getItem('lang') || document.documentElement.lang || 'en';
-    const isSpanish = lang.startsWith('es');
-    
+
+    const lang =
+      localStorage.getItem("lang") || document.documentElement.lang || "en";
+    const isSpanish = lang.startsWith("es");
+
     const path = isSpanish ? btn.dataset.es : btn.dataset.en;
     const name = isSpanish ? btn.dataset.nameEs : btn.dataset.nameEn;
     const label = isSpanish ? btn.dataset.esLabel : btn.dataset.enLabel;
-    
-    btn.href = path || '#';
-    btn.download = name || '';
-    btn.textContent = label || 'Download CV';
+
+    btn.href = path || "#";
+    btn.download = name || "";
+    btn.textContent = label || "Download CV";
   }
 
   // Initial load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCVButton);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCVButton);
   } else {
     initCVButton();
   }
 
   // Listen for language changes (integrate with existing system)
-  document.addEventListener('langchange', initCVButton);
+  document.addEventListener("langchange", initCVButton);
   new MutationObserver(() => initCVButton()).observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ['lang']
+    attributeFilter: ["lang"],
   });
 </script>
