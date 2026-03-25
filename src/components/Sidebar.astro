@@ -71,6 +71,25 @@ import LanguageToggle from "./LanguageToggle.astro";
       </ul>
     </div>
 
+      <!-- Contact Section -->
+      <div class="contact-section">
+        <h4 class="contact-title" data-translate data-en="Contact" data-es="Contacto">Contact</h4>
+        <div class="social-links-group">
+          <a href="https://www.linkedin.com/in/alan-navarrete/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link linkedin">
+            <img src="/images/linkedin.svg" alt="LinkedIn" width="32" height="32" class="w-8 h-8" />
+          </a>
+          <a href="https://github.com/SrHAO" target="_blank" rel="noopener" aria-label="GitHub" class="social-link github">
+            <img src="/images/github.svg" alt="GitHub" width="32" height="32" class="w-8 h-8" />
+          </a>
+          <a id="sidebar-email-link" aria-label="Email" class="social-link email">
+            <img src="/images/gmail.svg" alt="Gmail" width="32" height="32" class="w-8 h-8" />
+          </a>
+          <a href="https://wa.me/5543547891?text=Hola%20quiero%20contactarte" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link whatsapp">
+            <img src="/images/whatsapp.svg" alt="WhatsApp" width="32" height="32" class="w-8 h-8" />
+          </a>
+        </div>
+      </div>
+
     <!-- Toggles Section: Pushed to Bottom (space allowed) -->
     <div class="toggles-section">
       <div class="toggles-container">
@@ -80,3 +99,15 @@ import LanguageToggle from "./LanguageToggle.astro";
     </div>
   </nav>
 </aside>
+
+<script>
+  const user = "al.yoab.nav.sa";
+  const domain = "gmail";
+  const tld = 'com'
+
+  const emailLink = document.getElementById("sidebar-email-link");
+
+  if (emailLink) {
+    emailLink.href = `mailto:${user}@${domain}.${tld}`;
+  }
+</script>
