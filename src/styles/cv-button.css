@@ -1,0 +1,31 @@
+.cv-btn{
+    padding: 0.8rem 1.4rem;
+    background: linear-gradient(135deg, #974040,#571b1bb2);
+    color: white;
+    font-weight: 600;
+    border-radius: 0.7rem;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+/* Hover */
+
+.cv.btn:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(80, 8, 5, 0.4);
+}
+
+/* OUTLINE VARIANT */
+
+.cv-btn-outline{
+    background: transparent;
+    border: 2px solid #974040;
+    color: #832222b2;
+}
+
+.cv-btn-outline:hover{
+    background:  #974040;
+    color: white;
+}

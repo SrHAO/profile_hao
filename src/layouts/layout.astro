@@ -2,6 +2,7 @@
 import Sidebar from "../components/Sidebar.astro";
 import Footer from "../components/Footer.astro";
 import BackToTop from "../components/BackToTop.astro";
+import CVButton from "../components/CVButton.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -52,6 +53,8 @@ const {
     <main class="flex-1">
       <slot />
     </main>
+
+    <CVButton/>
 
     <Footer />
 
