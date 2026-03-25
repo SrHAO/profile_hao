@@ -4,18 +4,29 @@ import "../styles/cv-button.css";
 const { variant = "primary" } = Astro.props;
 ---
 
-<a
-  href="#"
-  class={`cv-btn ${variant === "outline" ? "cv-btn-outline" : ""}`}
-  data-en="/CV/Alan_Navarrete_En.pdf"
-  data-es="/CV/Alan_Navarrete_Es.pdf"
-  data-name-en="CV_Alan_Navarrete_EN.pdf"
-  data-name-es="CV_Alan_Navarrete_ES.pdf"
-  data-en-label="Download CV"
-  data-es-label="Descargar CV"
->
-  Download CV
-</a>
+<div class="cv-btn-wrapper">
+  <a
+    href="#"
+    class={`cv-btn ${variant === "outline" ? "cv-btn-outline" : ""}`}
+    data-en="/CV/Alan_Navarrete_En.pdf"
+    data-es="/CV/Alan_Navarrete_Es.pdf"
+    data-name-en="CV_Alan_Navarrete_EN.pdf"
+    data-name-es="CV_Alan_Navarrete_ES.pdf"
+    data-en-label="Download CV"
+    data-es-label="Descargar CV"
+  >
+    Download CV
+  </a>
+</div>
+
+<style>
+  .cv-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem 0;
+  }
+</style>
 
 <script>
   function initCVButton() {

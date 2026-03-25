@@ -1,1 +1,4 @@
-# TODO: Add translation to CVButton.astro&#10;&#10;1. [ ] Create TODO.md with plan steps&#10;2. [ ] Edit CVButton.astro to wrap text in data-translate span&#10;3. [ ] Test language toggle&#10;4. [ ] Mark complete and attempt_completion
+# TODO: Metallic Silver CV Button
+
+- [x] Step 1: Edit src/styles/cv-button.css with metallic silver styles (primary, hover, outline)
+

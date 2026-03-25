@@ -1,31 +1,51 @@
 .cv-btn{
     padding: 0.8rem 1.4rem;
-    background: linear-gradient(135deg, #974040,#571b1bb2);
-    color: white;
+    background: 
+        linear-gradient(145deg, #e0e0e0 0%, #d0d0d0 30%, #b8b8b8 70%, #a8a8a8 100%),
+        linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%),
+        linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
+    color: #333;
     font-weight: 600;
     border-radius: 0.7rem;
     text-decoration: none;
     text-align: center;
     transition: all 0.3s ease;
-    display: inline-block;
+    display: block;
+    margin: 0 auto;
+    max-width: fit-content;
+    box-shadow: 
+        inset 0 2px 4px rgba(255,255,255,0.4),
+        inset 0 -2px 4px rgba(0,0,0,0.2),
+        0 4px 8px rgba(0,0,0,0.15);
 }
 
 /* Hover */
 
-.cv.btn:hover{
+.cv-btn:hover{
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(80, 8, 5, 0.4);
+    box-shadow: 
+        inset 0 2px 4px rgba(255,255,255,0.5),
+        inset 0 -2px 4px rgba(0,0,0,0.25),
+        0 12px 24px rgba(128,128,128,0.4),
+        0 0 20px rgba(192,192,192,0.3);
 }
 
 /* OUTLINE VARIANT */
 
 .cv-btn-outline{
     background: transparent;
-    border: 2px solid #974040;
-    color: #832222b2;
+    border: 2px solid #c0c0c0;
+    color: #666;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
 }
 
 .cv-btn-outline:hover{
-    background:  #974040;
-    color: white;
+    background: 
+        linear-gradient(145deg, #e0e0e0 0%, #d0d0d0 30%, #b8b8b8 70%, #a8a8a8 100%),
+        linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%);
+    color: #333;
+    box-shadow: 
+        inset 0 2px 4px rgba(255,255,255,0.4),
+        inset 0 -2px 4px rgba(0,0,0,0.2),
+        0 4px 8px rgba(0,0,0,0.15);
 }
