@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# TODO notes
+TODO.md
+TODO-cvbutton.md
+TODO-sidebar.md
