@@ -7,6 +7,11 @@ interface Props {
     alt: string;
     title?: string;
     description?: string;
+    titleEn?: string;
+    titleEs?: string;
+    descriptionEn?: string;
+    descriptionEs?: string;
+    href?: string;
   }[];
 }
 
@@ -16,7 +21,11 @@ const { images } = Astro.props;
     src: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80',
     alt: 'Coming Soon',
     title: 'Coming Soon',
-    description: 'More amazing projects coming soon!'
+    description: 'More amazing projects coming soon!',
+    titleEn: 'Coming Soon',
+    titleEs: 'Próximamente',
+    descriptionEn: 'More amazing projects coming soon!',
+    descriptionEs: '¡Más proyectos increíbles próximamente!'
   };
 
   const allImages = [...images, COMING_SOON];
@@ -30,13 +39,19 @@ const { images } = Astro.props;
       {
         allImages.map((image) => (
           <div class="carousel-slide">
-            <img src={image.src} alt={image.alt} />
+            {image.href ? (
+              <a href={image.href} target="_blank" rel="noopener noreferrer">
+                <img src={image.src} alt={image.alt} />
+              </a>
+            ) : (
+              <img src={image.src} alt={image.alt} />
+            )}
             <div class="carousel-caption">
 {image.title && (
                 <h2
                   data-translate
-                  data-en={image.title}
-                  data-es={image.title === 'Coming Soon' ? 'Próximamente' : image.title.replace("Project", "Proyecto")}
+                  data-en={image.titleEn ?? image.title}
+                  data-es={image.titleEs ?? image.title}
                 >
                   {image.title}
                 </h2>
@@ -44,11 +59,8 @@ const { images } = Astro.props;
 {image.description && (
                 <p
                   data-translate
-                  data-en={image.description}
-                  data-es={image.description.includes('coming soon') ? '¡Más proyectos increíbles próximamente!' : image.description
-                    .replace("platform", "plataforma")
-                    .replace("website", "sitio web")
-                    .replace("design", "diseño")}
+                  data-en={image.descriptionEn ?? image.description}
+                  data-es={image.descriptionEs ?? image.description}
                 >
                   {image.description}
                 </p>

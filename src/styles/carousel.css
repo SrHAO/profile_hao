@@ -25,6 +25,14 @@
   position: relative;
 }
 
+.carousel-slide a {
+  display: block;
+}
+
+.carousel-slide a img {
+  cursor: pointer;
+}
+
 .carousel-slide img {
   width: 100%;
   height: 60vh;
