@@ -44,11 +44,6 @@ opacity:.8;
 transition:.3s ease;
 }
 
-.tech-icon svg:hover{
-transform:scale(1.2);
-opacity:1;
-}
-
 @keyframes tech-scroll{
 
 0%{

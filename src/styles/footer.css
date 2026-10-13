@@ -141,6 +141,11 @@ html.dark .social-link:hover img {
   filter: none;
 }
 
+/* GitHub icon turns black on hover in light mode (svg is white) */
+html:not(.dark) .footer .social-link.github:hover img {
+  filter: brightness(0);
+}
+
 .social-link:hover {
   transform: translateY(-4px);
 }
@@ -202,13 +207,143 @@ html[lang^="es"] .footer-logo-es {
 /* COPYRIGHT */
 .copyright-section {
   grid-column: 1 / -1;
-  text-align: center;
   margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  width: 100%;
 }
 
 .copyright {
+  margin: 0;
   font-size: 0.9rem;
   opacity: 0.8;
+  text-align: left;
+}
+
+/* LEGAL LINKS */
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0;
+}
+
+.legal-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--footer-link);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+  color: #3b82f6;
+}
+
+.legal-sep {
+  color: var(--footer-link);
+  opacity: 0.5;
+}
+
+/* LEGAL MODAL */
+.legal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.legal-modal[hidden] {
+  display: none;
+}
+
+.legal-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.legal-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  border: 1px solid var(--footer-border);
+  border-radius: 16px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.legal-modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 3rem;
+  border-bottom: 1px solid var(--footer-border);
+}
+
+.legal-modal-title {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--footer-text);
+}
+
+.legal-modal-close {
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--footer-text);
+  font-size: 1.75rem;
+  line-height: 1;
+  padding: 0 0.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.legal-modal-close:hover {
+  color: #ef4444;
+}
+
+.legal-modal-body {
+  padding: 1.25rem;
+  overflow-y: auto;
+}
+
+.legal-modal-content {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--footer-text);
 }
 
 /* RESPONSIVE */
@@ -227,6 +362,20 @@ html[lang^="es"] .footer-logo-es {
 
   .footer-center {
     align-items: center;
+  }
+
+  .copyright-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .copyright {
+    text-align: center;
+  }
+
+  .legal-links {
+    justify-content: center;
   }
 }
 

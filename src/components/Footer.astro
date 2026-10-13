@@ -131,6 +131,62 @@ import "../styles/footer.css";
         >
           © 2024 Alan Navarrete Profile. All rights reserved.
         </p>
+
+        <div class="legal-links">
+          <button
+            type="button"
+            class="legal-link"
+            data-translate
+            data-en="Terms & Conditions"
+            data-es="Términos y condiciones"
+            data-doc-en="/CV/terms_and_conditions_en.txt"
+            data-doc-es="/CV/t_rminos_y_condiciones_del_servicio.txt"
+            data-title-en="Terms and Conditions of Service"
+            data-title-es="Términos y Condiciones del Servicio"
+          >
+            Terms & Conditions
+          </button>
+          <span class="legal-sep" aria-hidden="true">·</span>
+          <button
+            type="button"
+            class="legal-link"
+            data-translate
+            data-en="Privacy Notice"
+            data-es="Aviso de privacidad"
+            data-doc-en="/CV/privacy_notice_en.txt"
+            data-doc-es="/CV/aviso_de_privacidad.txt"
+            data-title-en="Comprehensive Privacy Notice"
+            data-title-es="Aviso de Privacidad Integral"
+          >
+            Privacy Notice
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Legal document modal -->
+  <div class="legal-modal" id="legal-modal" hidden>
+    <div class="legal-modal-overlay" data-close-legal></div>
+    <div
+      class="legal-modal-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="legal-modal-title"
+    >
+      <div class="legal-modal-header">
+        <h3 class="legal-modal-title" id="legal-modal-title"></h3>
+        <button
+          type="button"
+          class="legal-modal-close"
+          aria-label="Close"
+          data-close-legal
+        >
+          &times;
+        </button>
+      </div>
+      <div class="legal-modal-body">
+        <pre class="legal-modal-content"></pre>
       </div>
     </div>
   </div>
@@ -146,4 +202,90 @@ import "../styles/footer.css";
   if (emailLink) {
     emailLink.href = `mailto:${user}@${domain}.${tld}`;
   }
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("legal-modal");
+    if (!modal) return;
+
+    const titleEl = modal.querySelector(
+      ".legal-modal-title",
+    ) as HTMLElement | null;
+    const contentEl = modal.querySelector(
+      ".legal-modal-content",
+    ) as HTMLElement | null;
+    const closeBtn = modal.querySelector(
+      ".legal-modal-close",
+    ) as HTMLElement | null;
+    const triggers = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-doc-en]"),
+    );
+
+    let lastFocused: HTMLElement | null = null;
+    let requestId = 0;
+
+    function getLang(): "en" | "es" {
+      const lang =
+        localStorage.getItem("lang") ||
+        document.documentElement.lang ||
+        "en";
+      return lang.startsWith("es") ? "es" : "en";
+    }
+
+    async function openModal(trigger: HTMLElement) {
+      const lang = getLang();
+      const doc =
+        trigger.getAttribute(`data-doc-${lang}`) ||
+        trigger.getAttribute("data-doc-en") ||
+        "";
+      const title =
+        trigger.getAttribute(`data-title-${lang}`) ||
+        trigger.getAttribute("data-title-en") ||
+        "";
+
+      if (!doc) return;
+
+      lastFocused = document.activeElement as HTMLElement | null;
+      if (titleEl) titleEl.textContent = title;
+      if (contentEl) contentEl.textContent = "…";
+
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+
+      const id = ++requestId;
+      try {
+        const res = await fetch(doc);
+        if (!res.ok) throw new Error(String(res.status));
+        const text = await res.text();
+        if (id === requestId && contentEl) contentEl.textContent = text;
+      } catch {
+        if (id === requestId && contentEl) {
+          contentEl.textContent =
+            "No se pudo cargar el documento. / Could not load the document.";
+        }
+      }
+
+      closeBtn?.focus();
+    }
+
+    function closeModal() {
+      modal!.hidden = true;
+      document.body.style.overflow = "";
+      requestId++;
+      lastFocused?.focus();
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => openModal(trigger));
+    });
+
+    modal.querySelectorAll("[data-close-legal]").forEach((el) => {
+      el.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !modal.hidden) closeModal();
+    });
+  });
 </script>
