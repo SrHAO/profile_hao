@@ -29,18 +29,32 @@ const { images } = Astro.props;
   };
 
   const allImages = [...images, COMING_SOON];
+
+  const carouselImages = [
+    { ...allImages[allImages.length - 1], isClone: true },
+    ...allImages.map((image) => ({ ...image, isClone: false })),
+    { ...allImages[0], isClone: true },
+  ];
 ---
 
 <div class="carousel">
   <button class="carousel-btn prev">❮</button>
 
   <div class="carousel-window">
-    <div class="carousel-track">
+    <div class="carousel-track" style="transform: translateX(-100%)">
       {
-        allImages.map((image) => (
-          <div class="carousel-slide">
+        carouselImages.map((image) => (
+          <div
+            class="carousel-slide"
+            aria-hidden={image.isClone ? "true" : undefined}
+          >
             {image.href ? (
-              <a href={image.href} target="_blank" rel="noopener noreferrer">
+              <a
+                href={image.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                tabindex={image.isClone ? -1 : undefined}
+              >
                 <img src={image.src} alt={image.alt} />
               </a>
             ) : (
@@ -77,33 +91,73 @@ const { images } = Astro.props;
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    let index = 0;
+    const track = document.querySelector(".carousel-track") as HTMLElement | null;
+    const nextBtn = document.querySelector(
+      ".carousel-btn.next",
+    ) as HTMLButtonElement | null;
+    const prevBtn = document.querySelector(
+      ".carousel-btn.prev",
+    ) as HTMLButtonElement | null;
 
-    const track = document.querySelector(".carousel-track") as HTMLElement;
-    const slides = document.querySelectorAll(".carousel-slide");
-    const nextBtn = document.querySelector(".carousel-btn.next");
-    const prevBtn = document.querySelector(".carousel-btn.prev");
+    if (!track || !nextBtn || !prevBtn) return;
 
-    if (!track || slides.length === 0 || !nextBtn || !prevBtn) return;
+    const slides = Array.from(track.children) as HTMLElement[];
+    if (slides.length < 3) return;
 
-    function updateCarousel() {
-      track.style.transform = `translateX(-${index * 100}%)`;
+    let index = 1;
+    let isAnimating = false;
+    let animTimer: number | undefined;
+
+    function applyTransform(animate: boolean) {
+      track!.style.transition = animate ? "" : "none";
+      track!.style.transform = `translateX(-${index * 100}%)`;
+      if (!animate) {
+        void track!.offsetWidth;
+      }
     }
 
-    nextBtn.addEventListener("click", () => {
-      index++;
-      if (index >= slides.length) {
-        index = 0;
+    function normalize() {
+      window.clearTimeout(animTimer);
+      isAnimating = false;
+      if (index === 0) {
+        index = slides.length - 2;
+        applyTransform(false);
+      } else if (index === slides.length - 1) {
+        index = 1;
+        applyTransform(false);
       }
-      updateCarousel();
+    }
+
+    function beginAnimation() {
+      isAnimating = true;
+      window.clearTimeout(animTimer);
+      animTimer = window.setTimeout(() => {
+        if (isAnimating) normalize();
+      }, 700);
+    }
+
+    applyTransform(false);
+
+    nextBtn.addEventListener("click", () => {
+      if (isAnimating || index >= slides.length - 1) return;
+      index++;
+      beginAnimation();
+      applyTransform(true);
     });
 
     prevBtn.addEventListener("click", () => {
+      if (isAnimating || index <= 0) return;
       index--;
-      if (index < 0) {
-        index = slides.length - 1;
+      beginAnimation();
+      applyTransform(true);
+    });
+
+    track.addEventListener("transitionend", (event) => {
+      const transition = event as TransitionEvent;
+      if (transition.target !== track || transition.propertyName !== "transform") {
+        return;
       }
-      updateCarousel();
+      normalize();
     });
   });
 </script>
