@@ -1,0 +1,86 @@
+Portafolio Profesional de Alan Navarrete - Desarrollo Web
+
+Última actualización: 13 de octubre de 2026
+
+1. INFORMACIÓN GENERAL Y ACEPTACIÓN
+
+El presente documento regula el acceso, navegación y uso del sitio web oficial
+de Alan Navarrete, desarrollador web independiente con residencia y operaciones
+principales en los Estados Unidos Mexicanos.
+
+Al acceder, navegar o utilizar este sitio web, así como al enviar cualquier
+formulario de contacto o solicitud desde cualquier país o región (incluyendo
+México, Estados Unidos, la Unión Europea, el Espacio Económico Europeo, Asia-Pacífico
+o cualquier otra jurisdicción), el usuario reconoce expresamente que ha leído,
+comprendido y aceptado la totalidad de los presentes Términos y Condiciones.
+
+2. NATURALEZA DEL SITIO WEB Y SERVICIOS PROFESIONALES
+
+Este sitio web funciona como un portafolio profesional interactivo destinado a
+la exhibición de proyectos, código, competencias técnicas y como canal de
+comunicación directa entre clientes potenciales globales y Alan Navarrete para la
+prestación de servicios independientes de desarrollo, arquitectura y consultoría web.
+
+3. SOLICITUD DE PRESUPUESTOS Y COTIZACIONES
+
+A) El envío de consultas, formularios o solicitudes de presupuesto NO constituye
+   una relación contractual vinculante ni obliga a Alan Navarrete ni al usuario a
+   la ejecución de ningún proyecto.
+
+B) Toda propuesta comercial, presupuesto o cotización emitida de manera individualizada
+   tendrá una validez temporal delimitada expresamente en dicho documento.
+
+C) La prestación formal de servicios profesionales se regirá exclusivamente por el
+   contrato de prestación de servicios, propuesta de trabajo formalmente aceptada
+   o "Statement of Work" (SOW) convenido formalmente entre las partes (artículos
+   2606 al 2615 del Código Civil Federal de México y disposiciones internacionales de
+   libre contratación).
+
+4. TRATAMIENTO INTERNACIONAL DE DATOS PERSONALES
+
+El tratamiento de la información de contacto recabada (nombre, correo electrónico,
+número telefónico, detalles del presupuesto) se realiza conforme a los principios de
+licitud, proporcionalidad, finalidad y confidencialidad. Para mayor detalle sobre el
+cumplimiento del estándar mexicano (LFPDPPP), europeo (RGPD/GDPR), estadounidense y
+asiático (PDPA/APPI/PIPA), consulte nuestro Aviso de Privacidad.
+
+5. PROPIEDAD INTELECTUAL E INDUSTRIAL
+
+Todos los contenidos expuestos en este sitio web —incluyendo, de forma enunciativa pero
+no limitativa: marcas, logotipos, código fuente, código cliente/servidor, componentes,
+diseños de interfaz, textos e imágenes del portafolio— son de la autoría y propiedad
+exclusiva de Alan Navarrete o cuentan con las licencias correspondientes.
+
+Queda estrictamente prohibida la reproducción, distribución, ingeniería inversa,
+modificación o explotación total o parcial del sitio web sin la autorización previa
+y por escrito de Alan Navarrete.
+
+6. LIMITACIÓN DE RESPONSABILIDAD GLOBAL
+
+Alan Navarrete realiza esfuerzos razonables para mantener la disponibilidad técnica
+del sitio. Sin embargo, no se hace responsable por:
+A) Fallas técnicas, caídas de red o indisponibilidad derivadas de proveedores de
+   infraestructura de servidor, CDN o causas de fuerza mayor a nivel internacional.
+B) Incompatibilidades del sitio web con software, navegadores o dispositivos del usuario.
+
+7. LEGISLACIÓN APLICABLE Y JURISDICCIÓN INTERNACIONAL
+
+A menos que la legislación imperativa de protección al consumidor del país de origen
+del usuario disponga lo contrario de forma irrenunciable:
+
+A) Los presentes Términos y Condiciones se rigen e interpretan de conformidad con
+   las leyes vigentes de los Estados Unidos Mexicanos.
+
+B) Para la resolución de cualquier conflicto o controversia legal que pudiera derivarse
+   de la utilización de este sitio web o la solicitud de servicios, el usuario y Alan
+   Navarrete se someten expresamente a la jurisdicción de los tribunales competentes
+   en los Estados Unidos Mexicanos, renunciando explícitamente a cualquier otro fuero
+   que pudiera corresponderles por razón de sus domicilios presentes o futuros.
+
+8. CONTACTO INTERNACIONAL
+
+Para dudas o consultas legales sobre estos términos, puede comunicarse a:
+
+- Titular: Alan Navarrete
+- Correo Electrónico: al.yoab.nav.sa@gmail.com
+- Teléfono/WhatsApp Internacional: +52 5543547891

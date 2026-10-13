@@ -1,0 +1,92 @@
+
+AVISO DE PRIVACIDAD INTEGRAL (INTERNACIONAL)
+Alan Navarrete - Desarrollo y Consultoría Web
+
+
+Última actualización: 13 de octubre de 2026
+
+Este Aviso de Privacidad regula la recolección, uso y protección de datos personales
+de usuarios a nivel global, cumpliendo con:
+- México: Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).
+- Unión Europea / EEE: Reglamento General de Protección de Datos (RGPD / GDPR).
+- Estados Unidos: Marco federal aplicable y normativas estatales (CCPA/CPRA).
+- Asia-Pacífico: Personal Data Protection Act de Singapur (PDPA), Act on the Protection
+  of Personal Information de Japón (APPI) y Personal Information Protection Act de
+  Corea del Sur (PIPA).
+
+1. IDENTIDAD Y DOMICILIO DEL RESPONSABLE
+
+El responsable del tratamiento de sus datos personales es Alan Navarrete,
+desarrollador web independiente, con domicilio de contacto y atención a derechos de privacidad a través del correo electrónico: al.yoab.nav.sa@gmail.com.
+
+2. DATOS PERSONALES RECABADOS Y MINIMIZACIÓN
+
+En estricto apego al principio de minimización de datos, únicamente recabamos los datos de identificación y contacto que usted proporciona de manera voluntaria a través de nuestros formularios de contacto o correos electrónicos:
+
+- Nombre completo / Nombre de contacto.
+- Dirección de correo electrónico.
+- Número telefónico / WhatsApp.
+- Información sobre el proyecto, presupuesto o especificaciones técnicas enviadas.
+
+NO recabamos datos personales sensibles (origen étnico, religión, salud, ideología)
+ni datos financieros/bancarios a través del sitio web.
+
+3. FINALIDADES DEL TRATAMIENTO Y BASE LEGAL
+
+Los datos se recaban con las siguientes finalidades primarias:
+A) Atender, procesar y responder a sus solicitudes, cotizaciones o consultas de desarrollo web.
+B) Elaborar y enviar propuestas comerciales o presupuestos personalizados.
+C) Iniciar las comunicaciones precontractuales para la contratación de servicios.
+
+BASES LEGALES (RGPD/GDPR y Normativa Internacional):
+- Aplicación de medidas precontractuales a petición del interesado (Art. 6.1.b del RGPD).
+- Consentimiento explícito del usuario otorgado al enviar el formulario (Art. 6.1.a del RGPD / LFPDPPP).
+- Interés legítimo profesional en responder las consultas recibidas (Art. 6.1.f del RGPD).
+
+No utilizamos sus datos personales para finalidades secundarias ni para mercadotecnia,
+perfilamiento publicitario o envío de spam.
+
+4. ALMACENAMIENTO, RETENCIÓN Y NO DIVULGACIÓN (NO VENTA DE DATOS)
+
+A) Garantía de Confidencialidad y No Venta: Sus datos NO serán vendidos, alquilados,
+   cedidos ni compartidos con terceros bajo ninguna circunstancia (cumpliendo con la LFPDPPP
+   en México, CCPA/CPRA en EE. UU. y normativas de Asia-Pacífico).
+
+B) Período de Conservación: Los datos se conservarán únicamente durante el tiempo
+   necesario para dar atención a su solicitud de presupuesto. Si no se formaliza una
+   relación contractual, los datos serán eliminados de nuestros sistemas en un plazo
+   máximo de 24 meses desde la última interacción.
+
+5. TRANSFERENCIAS INTERNACIONALES DE DATOS
+
+Debido a la naturaleza global de Internet y a que el responsable se ubica en México:
+Al enviar un formulario desde la Unión Europea, Estados Unidos o Asia, sus datos
+se transfieren a México exclusivamente para ser procesados por Alan Navarrete con el fin
+de responder su solicitud. Dicha transferencia se realiza bajo medidas razonables
+de seguridad y con base en el consentimiento explícito del titular.
+
+6. DERECHOS GLOBALES DEL USUARIO (ARCO / GDPR / CCPA / PDPA / APPI)
+
+Independientemente de su ubicación geográfica, usted cuenta con los siguientes derechos:
+- Acceso: Conocer qué datos personales conservamos.
+- Rectificación: Solicitar la corrección de datos inexactos o incompletos.
+- Cancelación / Supresión / "Derecho al Olvido": Solicitar la eliminación total de sus datos.
+- Oposición / Limitación: Oponerse al tratamiento o restringir el alcance de su uso.
+- Portabilidad: Solicitar una copia digital de sus datos en formato estructurado.
+
+Para ejercer cualquiera de estos derechos, envíe una solicitud por correo electrónico a:
+al.yoab.nav.sa@gmail.com indicando su nombre, país de residencia y la solicitud específica.
+Se le responderá en un plazo máximo de 20 días hábiles (o en el plazo fijado por la norma
+de su país).
+
+7. COOKIES Y TECNOLOGÍAS DE RASTREO
+
+Este sitio utiliza exclusivamente cookies técnicas esenciales requeridas para la
+navegación y el correcto envío de formularios. No se utilizan cookies publicitarias,
+píxeles de rastreo ni servicios de perfilamiento comportamental de terceros.
+
+8. CAMBIOS AL AVISO DE PRIVACIDAD
+
+El presente aviso puede actualizarse periódicamente para cumplir con nuevas reformas
+legales a nivel nacional e internacional. Las modificaciones estarán siempre publicadas
+en este sitio web.

@@ -1,0 +1,93 @@
+PRIVACY POLICY INTERNATIONAL
+Alan Navarrete - Web Development and Consulting
+
+Last updated: October 13, 2026
+
+This Privacy Notice governs the collection, use and protection of personal data
+of users globally, in compliance with:
+- Mexico: Federal Law on the Protection of Personal Data Held by Private Parties (LFPDPPP).
+- European Union / EEA: General Data Protection Regulation (GDPR).
+- United States: Applicable federal framework and state regulations (CCPA/CPRA).
+- Asia-Pacific: Personal Data Protection Act of Singapore (PDPA), Act on the Protection
+  of Personal Information of Japan (APPI) and Personal Information Protection Act of
+  South Korea (PIPA).
+
+1. IDENTITY AND ADDRESS OF THE DATA CONTROLLER
+
+The party responsible for the processing of your personal data is Alan Navarrete,
+an independent web developer, with an address for contact and attention to privacy
+rights via email: al.yoab.nav.sa@gmail.com.
+
+2. PERSONAL DATA COLLECTED AND MINIMIZATION
+
+In strict adherence to the principle of data minimization, we only collect the
+identification and contact data that you voluntarily provide through our contact
+forms or emails:
+
+- Full name / Contact name.
+- Email address.
+- Phone number / WhatsApp.
+- Information about the project, budget or technical specifications submitted.
+
+We do NOT collect sensitive personal data (ethnic origin, religion, health, ideology)
+or financial/banking data through the website.
+
+3. PURPOSES OF PROCESSING AND LEGAL BASIS
+
+The data is collected for the following primary purposes:
+A) To attend to, process and respond to your requests, quotes or web development inquiries.
+B) To prepare and send commercial proposals or personalized budgets.
+C) To initiate pre-contractual communications for the contracting of services.
+
+LEGAL BASES (GDPR and International Regulations):
+- Application of pre-contractual measures at the request of the data subject (Art. 6.1.b of the GDPR).
+- Explicit consent of the user granted when submitting the form (Art. 6.1.a of the GDPR / LFPDPPP).
+- Legitimate professional interest in responding to the inquiries received (Art. 6.1.f of the GDPR).
+
+We do not use your personal data for secondary purposes or for marketing,
+advertising profiling or sending spam.
+
+4. STORAGE, RETENTION AND NON-DISCLOSURE (NO SALE OF DATA)
+
+A) Guarantee of Confidentiality and Non-Sale: Your data will NOT be sold, rented,
+   assigned or shared with third parties under any circumstance (complying with the
+   LFPDPPP in Mexico, CCPA/CPRA in the U.S. and Asia-Pacific regulations).
+
+B) Retention Period: The data will be kept only for the time
+   necessary to attend to your budget request. If a contractual
+   relationship is not formalized, the data will be deleted from our systems within a
+   maximum period of 24 months from the last interaction.
+
+5. INTERNATIONAL DATA TRANSFERS
+
+Due to the global nature of the Internet and the fact that the controller is located in Mexico:
+When submitting a form from the European Union, the United States or Asia, your data
+is transferred to Mexico exclusively to be processed by Alan Navarrete in order
+to respond to your request. Such transfer is carried out under reasonable security
+measures and based on the explicit consent of the data subject.
+
+6. GLOBAL USER RIGHTS (ARCO / GDPR / CCPA / PDPA / APPI)
+
+Regardless of your geographic location, you have the following rights:
+- Access: To know what personal data we keep.
+- Rectification: To request the correction of inaccurate or incomplete data.
+- Cancellation / Erasure / "Right to be Forgotten": To request the total deletion of your data.
+- Objection / Restriction: To object to the processing or restrict the scope of its use.
+- Portability: To request a digital copy of your data in a structured format.
+
+To exercise any of these rights, send a request by email to:
+al.yoab.nav.sa@gmail.com indicating your name, country of residence and the specific request.
+You will receive a response within a maximum period of 20 business days (or within the period set by
+the regulation of your country).
+
+7. COOKIES AND TRACKING TECHNOLOGIES
+
+This site exclusively uses essential technical cookies required for
+browsing and the correct submission of forms. No advertising cookies,
+tracking pixels or third-party behavioral profiling services are used.
+
+8. CHANGES TO THE PRIVACY NOTICE
+
+This notice may be updated periodically to comply with new legal
+reforms at a national and international level. Modifications will always be published
+on this website.
