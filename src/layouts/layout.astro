@@ -1,5 +1,6 @@
 ---
 import Sidebar from "../components/Sidebar.astro";
+import TopControls from "../components/TopControls.astro";
 import Footer from "../components/Footer.astro";
 import BackToTop from "../components/BackToTop.astro";
 import CVButton from "../components/CVButton.astro";
@@ -55,6 +56,7 @@ const {
 
   <body class="min-h-screen flex flex-col transition-colors duration-300">
     <Sidebar />
+    <TopControls />
 
     <main class="flex-1">
       <slot />
@@ -66,3 +68,66 @@ const {
     <BackToTop />
   </body>
 </html>
+
+<script>
+  const HIDE_CLASS = "-translate-y-full";
+  const SHOW_CLASS = "translate-y-0";
+  const THRESHOLD = 6;
+
+  function initSmartHeader(): void {
+    const headers = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-smart-header]"),
+    );
+    if (headers.length === 0) return;
+
+    const sidebar = document.getElementById(
+      "sidebar-toggle",
+    ) as HTMLInputElement | null;
+    let lastScrollTop: number = window.scrollY;
+    let ticking = false;
+
+    const setHidden = (hidden: boolean): void => {
+      for (const el of headers) {
+        el.classList.toggle(HIDE_CLASS, hidden);
+        el.classList.toggle(SHOW_CLASS, !hidden);
+      }
+    };
+
+    const update = (): void => {
+      const scrollTop: number = window.scrollY;
+      const sidebarOpen: boolean = sidebar?.checked ?? false;
+
+      if (sidebarOpen || scrollTop <= THRESHOLD) {
+        setHidden(false);
+      } else if (scrollTop > lastScrollTop + THRESHOLD) {
+        setHidden(true);
+      } else if (scrollTop < lastScrollTop - THRESHOLD) {
+        setHidden(false);
+      }
+
+      lastScrollTop = scrollTop;
+      ticking = false;
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+      },
+      { passive: true },
+    );
+
+    document
+      .getElementById("backToTop")
+      ?.addEventListener("click", () => setHidden(false));
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initSmartHeader);
+  } else {
+    initSmartHeader();
+  }
+</script>

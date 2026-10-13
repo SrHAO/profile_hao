@@ -1,0 +1,14 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import LanguageToggle from "./LanguageToggle.astro";
+import "../styles/TopControls.css";
+---
+
+<div
+  class="top-controls translate-y-0 transition-transform duration-300 ease-out will-change-transform"
+  data-smart-header
+  aria-label="Settings"
+>
+  <ThemeToggle />
+  <LanguageToggle />
+</div>

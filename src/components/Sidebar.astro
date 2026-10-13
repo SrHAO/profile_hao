@@ -1,7 +1,5 @@
 ---
 import "../styles/Sidebar.css";
-import ThemeToggle from "./ThemeToggle.astro";
-import LanguageToggle from "./LanguageToggle.astro";
 ---
 
 <!-- Toggle Button -->
@@ -9,7 +7,8 @@ import LanguageToggle from "./LanguageToggle.astro";
 
 <label
   for="sidebar-toggle"
-  class="sidebar-toggle"
+  class="sidebar-toggle translate-y-0 transition-transform duration-300 ease-out will-change-transform"
+  data-smart-header
   aria-label="Toggle navigation menu"
 >
   <span class="hamburger">
@@ -90,13 +89,6 @@ import LanguageToggle from "./LanguageToggle.astro";
         </div>
       </div>
 
-    <!-- Toggles Section: Pushed to Bottom (space allowed) -->
-    <div class="toggles-section">
-      <div class="toggles-container">
-        <ThemeToggle />
-        <LanguageToggle />
-      </div>
-    </div>
   </nav>
 </aside>
 
