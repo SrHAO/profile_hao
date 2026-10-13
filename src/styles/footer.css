@@ -186,6 +186,19 @@ html.dark .footer-logo {
   filter: brightness(0) invert(1) sepia(1) saturate(17) hue-rotate(64deg) brightness(0.64);
 }
 
+/* LANGUAGE LOGO SWITCH */
+.footer-logo-es {
+  display: none;
+}
+
+html[lang^="es"] .footer-logo-en {
+  display: none;
+}
+
+html[lang^="es"] .footer-logo-es {
+  display: block;
+}
+
 /* COPYRIGHT */
 .copyright-section {
   grid-column: 1 / -1;
