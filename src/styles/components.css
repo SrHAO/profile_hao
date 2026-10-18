@@ -1,25 +1,203 @@
-.theme-toggle-btn {
+.theme-toggle-track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
   width: 64px;
   height: 36px;
-  background: #d1d5db;
-  border-radius: 9999px;
   padding: 4px;
   cursor: pointer;
-  border: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #e5e7eb 0%, #d1d5db 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05),
+    0 1px 1px rgba(0, 0, 0, 0.03);
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
 }
 
-html.dark .theme-toggle-btn {
-  background: #374151;
+.theme-toggle-track:focus-visible {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.05),
+    0 0 0 3px rgba(96, 165, 250, 0.35);
 }
 
-.toggle-circle {
+.theme-toggle-track:active {
+  transform: scale(0.98);
+  transition: transform 120ms ease;
+}
+
+html.dark .theme-toggle-track {
+  border-color: rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, #374151 0%, #1f2937 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 1px 1px rgba(0, 0, 0, 0.25);
+}
+
+html.dark .theme-toggle-track:focus-visible {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(96, 165, 250, 0.45);
+}
+
+.theme-toggle-thumb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 28px;
   height: 28px;
-  background: #fbbf24;
   border-radius: 50%;
-  transition: transform 0.3s;
+  background: radial-gradient(120% 120% at 30% 20%, #93c5fd 0%, #60a5fa 100%);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.15), 0 1px 3px rgba(15, 23, 42, 0.1);
+  transform: translateX(0);
+  transition: transform 380ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    background 380ms ease;
+  overflow: hidden;
+  will-change: transform;
 }
 
-.toggle-circle.dark-mode {
+html.dark .theme-toggle-thumb {
+  background: radial-gradient(120% 120% at 70% 30%, #1e293b 0%, #0f172a 100%);
   transform: translateX(32px);
+}
+
+.thumb-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transition: opacity 380ms ease;
+  pointer-events: none;
+}
+
+.thumb-bg-day {
+  background: radial-gradient(120% 120% at 30% 20%, #93c5fd 0%, #60a5fa 100%);
+  opacity: 1;
+}
+
+.thumb-bg-night {
+  background: radial-gradient(120% 120% at 70% 30%, #1e293b 0%, #0f172a 100%);
+  opacity: 0;
+}
+
+html.dark .thumb-bg-day {
+  opacity: 0;
+}
+
+html.dark .thumb-bg-night {
+  opacity: 1;
+}
+
+.icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  color: #f59e0b;
+  transition: opacity 320ms ease,
+    transform 380ms cubic-bezier(0.25, 0.1, 0.25, 1),
+    rotate 380ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  pointer-events: none;
+}
+
+.icon-sun {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.icon-moon {
+  color: #e5e7eb;
+  opacity: 0;
+  transform: scale(0.8) rotate(-20deg);
+}
+
+html.dark .icon-sun {
+  opacity: 0;
+  transform: scale(0.7) rotate(25deg);
+}
+
+html.dark .icon-moon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.clouds {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 28px;
+  height: 28px;
+  transform: translateY(1px);
+  transition: opacity 360ms ease, transform 420ms ease;
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+html.dark .clouds {
+  opacity: 0;
+  transform: translateY(2px);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+}
+
+.stars circle {
+  transform-origin: center;
+  transition: opacity 340ms ease, transform 340ms ease;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+html.dark .stars circle {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.stars circle:nth-child(2) {
+  transition-delay: 40ms;
+}
+
+.stars circle:nth-child(3) {
+  transition-delay: 80ms;
+}
+
+.stars circle:nth-child(4) {
+  transition-delay: 120ms;
+}
+
+.stars circle:nth-child(5) {
+  transition-delay: 160ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-track,
+  .theme-toggle-thumb,
+  .thumb-layer,
+  .icon,
+  .clouds,
+  .stars circle {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .theme-toggle-track:active {
+    transform: none;
+  }
+
+  html.dark .theme-toggle-thumb {
+    transform: translateX(32px) !important;
+  }
 }

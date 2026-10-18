@@ -180,35 +180,64 @@
 .nav-section a {
   display: flex;
   align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 1rem 1.2rem;
   border-radius: 12px;
   text-decoration: none;
-  font-size: clamp(1.05rem,3vw,1.15rem);
+  font-size: clamp(1.05rem, 3vw, 1.15rem);
   color: var(--text-primary);
-  transition: all .25s ease;
+  transition: all 0.25s ease;
   position: relative;
+  background: transparent;
+  backdrop-filter: blur(4px) saturate(115%);
+  -webkit-backdrop-filter: blur(4px) saturate(115%);
+  border: none;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
 }
 
 .nav-section a:hover {
-  background: rgba(59,130,246,0.12);
-  transform: translateX(6px);
+  background: rgba(59, 130, 246, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.2);
 }
 
 .nav-section a::before {
-  content:"";
-  position:absolute;
-  left:0;
-  top:50%;
-  width:3px;
-  height:0%;
-  background:#3b82f6;
-  border-radius:3px;
-  transform:translateY(-50%);
-  transition:all .25s ease;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  border: 1px solid rgba(17, 24, 39, 0.5);
+  border-bottom: none;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  pointer-events: none;
+  transition: border-color 0.25s ease;
 }
 
-.nav-section a:hover::before {
-  height:60%;
+html.dark .nav-section a::before {
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.nav-section a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 0%;
+  background: #3b82f6;
+  border-radius: 3px;
+  transform: translateY(-50%);
+  transition: all 0.25s ease;
+}
+
+.nav-section a:hover::after {
+  height: 60%;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -216,5 +245,38 @@
     transition: none;
   }
 }
+
+/* Sidebar social links - glass + top-half highlight */
+.sidebar .social-link {
+  position: relative;
+  background: transparent;
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  border: none;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08);
+}
+
+.sidebar .social-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  border: 1px solid rgba(17, 24, 39, 0.5);
+  border-bottom: none;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  pointer-events: none;
+  transition: border-color 0.25s ease;
+}
+
+html.dark .sidebar .social-link::before {
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+/* GitHub: color controlado por reglas globales (morado / blanco en hover) */
 
 

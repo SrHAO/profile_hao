@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/layout.astro";
+import ExpandingCards from "../components/ExpandingCards.astro";
+
+const cards = [
+  {
+    type: "video" as const,
+    src: "/videos/Architectural.mp4",
+    poster: "/images/Architectural1.webp",
+    alt: "Architectural",
+    titleEn: "Architectural",
+    titleEs: "Architectural",
+    subtitleEn: "Constru · Constructions",
+    subtitleEs: "Constru · Constructions",
+    hintEn: "Press the image to visit the website",
+    hintEs: "Presiona la imagen para conocer la página web",
+    href: "https://construct-template.vercel.app/es",
+  },
+  {
+    type: "video" as const,
+    src: "/videos/Person_editi.mp4",
+    poster: "/images/fases-produccion.webp",
+    alt: "Producción audio-video",
+    titleEn: "Audio-video production",
+    titleEs: "Producción audio-video",
+    subtitleEn: "Production phases",
+    subtitleEs: "Fases de producción",
+    hintEn: "Press the image to visit the website",
+    hintEs: "Presiona la imagen para conocer la página web",
+    href: "https://editor-sound-video.vercel.app/",
+  },
+  {
+    type: "image" as const,
+    src: "https://picsum.photos/1200/675?random=3",
+    alt: "Project Three",
+    titleEn: "Project Three",
+    titleEs: "Proyecto Tres",
+  },
+  {
+    type: "image" as const,
+    src: "https://picsum.photos/1200/675?random=4",
+    alt: "Project Four",
+    titleEn: "Project Four",
+    titleEs: "Proyecto Cuatro",
+  },
+  {
+    type: "image" as const,
+    src: "https://picsum.photos/1200/675?random=5",
+    alt: "Project Five",
+    titleEn: "Project Five",
+    titleEs: "Proyecto Cinco",
+  },
+  {
+    type: "image" as const,
+    src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80",
+    alt: "Coming Soon",
+    titleEn: "Coming Soon",
+    titleEs: "Próximamente",
+  },
+];
+---
+
+<Layout title="Protools - Web Developer Profile">
+  <div class="protools-container">
+    <h1
+      class="protools-title"
+      data-translate
+      data-en="Protools"
+      data-es="Protools"
+    >
+      Protools
+    </h1>
+
+    <ExpandingCards cards={cards} />
+  </div>
+</Layout>

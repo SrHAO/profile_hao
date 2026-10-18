@@ -1,7 +1,7 @@
 .hero-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 16 / 6.885;
   overflow: hidden;
 }
 
@@ -83,6 +83,6 @@
 @media (max-width: 768px) {
   .hero-wrapper {
     aspect-ratio: 4 / 5; 
-    height: 60vh; 
+    height: 45.9vh; 
   }
 }

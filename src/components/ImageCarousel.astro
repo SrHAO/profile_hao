@@ -4,6 +4,8 @@ import "../styles/carousel.css";
 interface Props {
   images: {
     src: string;
+    type?: "image" | "video";
+    poster?: string;
     alt: string;
     title?: string;
     description?: string;
@@ -55,8 +57,30 @@ const { images } = Astro.props;
                 rel="noopener noreferrer"
                 tabindex={image.isClone ? -1 : undefined}
               >
-                <img src={image.src} alt={image.alt} />
+                {image.type === "video" ? (
+                  <video
+                    class="carousel-video"
+                    src={image.src}
+                    poster={image.poster}
+                    muted
+                    loop
+                    playsinline
+                    preload="auto"
+                  />
+                ) : (
+                  <img src={image.src} alt={image.alt} />
+                )}
               </a>
+            ) : image.type === "video" ? (
+              <video
+                class="carousel-video"
+                src={image.src}
+                poster={image.poster}
+                muted
+                loop
+                playsinline
+                preload="auto"
+              />
             ) : (
               <img src={image.src} alt={image.alt} />
             )}
@@ -104,9 +128,25 @@ const { images } = Astro.props;
     const slides = Array.from(track.children) as HTMLElement[];
     if (slides.length < 3) return;
 
+    const videos = Array.from(track.querySelectorAll("video")) as HTMLVideoElement[];
+
     let index = 1;
     let isAnimating = false;
     let animTimer: number | undefined;
+
+    function updateVideo() {
+      videos.forEach((video) => {
+        const slide = video.closest(".carousel-slide") as HTMLElement | null;
+        if (slide && slides.indexOf(slide) === index) {
+          video.muted = true;
+          const playPromise = video.play();
+          if (playPromise) playPromise.catch(() => {});
+        } else {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
+    }
 
     function applyTransform(animate: boolean) {
       track!.style.transition = animate ? "" : "none";
@@ -114,6 +154,7 @@ const { images } = Astro.props;
       if (!animate) {
         void track!.offsetWidth;
       }
+      updateVideo();
     }
 
     function normalize() {

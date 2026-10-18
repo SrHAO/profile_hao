@@ -8,14 +8,26 @@ const { variant = "primary" } = Astro.props;
   <a
     href="#"
     class={`cv-btn ${variant === "outline" ? "cv-btn-outline" : ""}`}
+    data-phase="idle"
     data-en="/CV/Alan_Navarrete_En.pdf"
     data-es="/CV/Alan_Navarrete_Es.pdf"
     data-name-en="CV_Alan_Navarrete_EN.pdf"
     data-name-es="CV_Alan_Navarrete_ES.pdf"
     data-en-label="Download CV"
     data-es-label="Descargar CV"
+    data-en-full="Save"
+    data-es-full="Guardar"
+    data-en-done="Saved"
+    data-es-done="Guardado"
   >
-    Download CV
+    <span class="cv-btn__water" aria-hidden="true">
+      <span class="cv-btn__bubble cv-btn__bubble--1"></span>
+      <span class="cv-btn__bubble cv-btn__bubble--2"></span>
+      <span class="cv-btn__bubble cv-btn__bubble--3"></span>
+    </span>
+    <span class="cv-btn__wave" aria-hidden="true"></span>
+    <span class="cv-btn__label">Download CV</span>
+    <span class="cv-btn__progress">0%</span>
   </a>
 </div>
 
@@ -29,34 +41,181 @@ const { variant = "primary" } = Astro.props;
 </style>
 
 <script>
-  function initCVButton() {
-    const btn = document.querySelector(".cv-btn") as HTMLAnchorElement;
-    if (!btn) return;
+  const FILL_MS = 5000;
+  const DRAIN_MS = 900;
+  const HOLD_MS = 1500;
 
-    const lang =
-      localStorage.getItem("lang") || document.documentElement.lang || "en";
-    const isSpanish = lang.startsWith("es");
+  const prefersReduced = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+  const fillMs = prefersReduced ? 700 : FILL_MS;
+  const drainMs = prefersReduced ? 350 : DRAIN_MS;
 
-    const path = isSpanish ? btn.dataset.es : btn.dataset.en;
-    const name = isSpanish ? btn.dataset.nameEs : btn.dataset.nameEn;
-    const label = isSpanish ? btn.dataset.esLabel : btn.dataset.enLabel;
+  type Phase = "idle" | "fill" | "hold" | "drain";
 
-    btn.href = path || "#";
-    btn.download = name || "";
-    btn.textContent = label || "Download CV";
+  function setupButton(btn: HTMLAnchorElement) {
+    if (btn.dataset.init === "true") return;
+    btn.dataset.init = "true";
+
+    const label = btn.querySelector<HTMLElement>(".cv-btn__label");
+    const progress = btn.querySelector<HTMLElement>(".cv-btn__progress");
+
+    let phase: Phase = "idle";
+    let fill = 0;
+    let raf = 0;
+    let last = 0;
+    let holdTimer = 0;
+    let sticky = false;
+
+    const texts = () => {
+      const lang =
+        localStorage.getItem("lang") || document.documentElement.lang || "en";
+      const es = lang.startsWith("es");
+      return {
+        base: (es ? btn.dataset.esLabel : btn.dataset.enLabel) || "Download CV",
+        full: (es ? btn.dataset.esFull : btn.dataset.enFull) || "Save",
+        done: (es ? btn.dataset.esDone : btn.dataset.enDone) || "Saved",
+        path: es ? btn.dataset.es : btn.dataset.en,
+        name: es ? btn.dataset.nameEs : btn.dataset.nameEn,
+      };
+    };
+
+    const setFill = (value: number) => {
+      fill = Math.min(100, Math.max(0, value));
+      btn.style.setProperty("--fill", `${fill.toFixed(2)}%`);
+      btn.style.setProperty("--fill-num", fill.toFixed(2));
+      btn.style.setProperty("--glow", (fill / 100).toFixed(3));
+      if (progress) progress.textContent = `${Math.round(fill)}%`;
+    };
+
+    const setPhase = (next: Phase) => {
+      phase = next;
+      btn.dataset.phase = next;
+      if (label) {
+        const t = texts();
+        label.textContent =
+          next === "hold" ? t.full : next === "drain" ? t.done : t.base;
+      }
+    };
+
+    const startLoop = () => {
+      if (raf) return;
+      last = performance.now();
+      raf = requestAnimationFrame(tick);
+    };
+
+    const stopLoop = () => {
+      if (raf) cancelAnimationFrame(raf);
+      raf = 0;
+    };
+
+    function tick(now: number) {
+      const dt = now - last;
+      last = now;
+
+      if (phase === "fill") {
+        setFill(fill + (dt / fillMs) * 100);
+        if (fill >= 100) {
+          complete();
+          return;
+        }
+        raf = requestAnimationFrame(tick);
+      } else if (phase === "drain") {
+        setFill(fill - (dt / drainMs) * 100);
+        if (fill <= 0) {
+          finishDrain();
+          return;
+        }
+        raf = requestAnimationFrame(tick);
+      } else {
+        raf = 0;
+      }
+    }
+
+    const triggerDownload = () => {
+      const t = texts();
+      if (!t.path) return;
+      const a = document.createElement("a");
+      a.href = t.path;
+      if (t.name) a.download = t.name;
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    };
+
+    function complete() {
+      setFill(100);
+      setPhase("hold");
+      stopLoop();
+      triggerDownload();
+      window.clearTimeout(holdTimer);
+      holdTimer = window.setTimeout(() => {
+        setPhase("drain");
+        startLoop();
+      }, HOLD_MS);
+    }
+
+    function finishDrain() {
+      setFill(0);
+      setPhase("idle");
+      sticky = false;
+      stopLoop();
+    }
+
+    const startFill = () => {
+      if (phase === "hold" || phase === "fill" || fill >= 100) return;
+      window.clearTimeout(holdTimer);
+      setPhase("fill");
+      startLoop();
+    };
+
+    const startDrain = () => {
+      if (phase !== "fill") return;
+      setPhase("drain");
+      startLoop();
+    };
+
+    btn.addEventListener("pointerenter", startFill);
+    btn.addEventListener("pointerleave", () => {
+      if (!sticky) startDrain();
+    });
+    btn.addEventListener("focus", startFill);
+    btn.addEventListener("blur", () => {
+      if (!sticky) startDrain();
+    });
+
+    btn.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse") sticky = true;
+      startFill();
+    });
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (phase === "hold") triggerDownload();
+      else if (phase !== "fill") startFill();
+    });
+
+    const applyLang = () => setPhase(phase);
+    document.addEventListener("langchange", applyLang);
+    new MutationObserver(applyLang).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang"],
+    });
+
+    setFill(0);
+    setPhase("idle");
   }
 
-  // Initial load
+  function initCVButtons() {
+    document
+      .querySelectorAll<HTMLAnchorElement>(".cv-btn")
+      .forEach(setupButton);
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initCVButton);
+    document.addEventListener("DOMContentLoaded", initCVButtons);
   } else {
-    initCVButton();
+    initCVButtons();
   }
-
-  // Listen for language changes (integrate with existing system)
-  document.addEventListener("langchange", initCVButton);
-  new MutationObserver(() => initCVButton()).observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["lang"],
-  });
 </script>

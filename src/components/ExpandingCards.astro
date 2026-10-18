@@ -1,0 +1,129 @@
+---
+import "../styles/expanding-cards.css";
+
+interface Card {
+  type: "video" | "image";
+  src: string;
+  poster?: string;
+  alt?: string;
+  titleEn: string;
+  titleEs: string;
+  subtitleEn?: string;
+  subtitleEs?: string;
+  hintEn?: string;
+  hintEs?: string;
+  href?: string;
+}
+
+interface Props {
+  cards: Card[];
+}
+
+const { cards } = Astro.props;
+---
+
+<div class="expanding-cards">
+  {
+    cards.map((card, index) => (
+      <article
+        class={`ec-card${index === 0 ? " is-active" : ""}`}
+        data-index={index}
+        tabindex="0"
+        role="button"
+        aria-label={card.titleEn}
+      >
+        {card.type === "video" ? (
+          <>
+            <img class="ec-poster" src={card.poster} alt="" aria-hidden="true" />
+            <video
+              class="ec-video"
+              src={card.src}
+              poster={card.poster}
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            />
+          </>
+        ) : (
+          <img class="ec-media" src={card.src} alt={card.alt ?? card.titleEn} loading="lazy" />
+        )}
+        <div class="ec-footer">
+          <h3
+            class="ec-label"
+            data-translate
+            data-en={card.titleEn}
+            data-es={card.titleEs}
+          >
+            {card.titleEn}
+          </h3>
+          {card.href && (
+            <a
+              class="ec-link"
+              href={card.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-translate
+              data-en={card.subtitleEn}
+              data-es={card.subtitleEs}
+            >
+              {card.subtitleEn}
+            </a>
+          )}
+          {card.href && card.hintEn && (
+            <span
+              class="ec-hint"
+              data-translate
+              data-en={card.hintEn}
+              data-es={card.hintEs}
+            >
+              {card.hintEn}
+            </span>
+          )}
+        </div>
+      </article>
+    ))
+  }
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const root = document.querySelector(".expanding-cards") as HTMLElement | null;
+    if (!root) return;
+
+    const cards = Array.from(root.querySelectorAll<HTMLElement>(".ec-card"));
+    const videos = Array.from(
+      root.querySelectorAll<HTMLVideoElement>("video.ec-video"),
+    );
+
+    const setActive = (card: HTMLElement) => {
+      cards.forEach((c) => c.classList.toggle("is-active", c === card));
+
+      videos.forEach((video) => {
+        if (card.contains(video)) {
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(() => {});
+          }
+        } else {
+          video.pause();
+          try {
+            video.currentTime = 0;
+          } catch {
+            /* ignore */
+          }
+        }
+      });
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", () => setActive(card));
+      card.addEventListener("click", () => setActive(card));
+      card.addEventListener("focus", () => setActive(card));
+    });
+
+    root.querySelectorAll<HTMLAnchorElement>(".ec-link").forEach((link) => {
+      link.addEventListener("click", (event) => event.stopPropagation());
+    });
+  });
+</script>

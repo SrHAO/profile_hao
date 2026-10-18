@@ -1,51 +1,306 @@
-.cv-btn{
-    padding: 0.8rem 1.4rem;
-    background: 
-        linear-gradient(145deg, #e0e0e0 0%, #d0d0d0 30%, #b8b8b8 70%, #a8a8a8 100%),
-        linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%),
-        linear-gradient(135deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 100%);
-    color: #333;
-    font-weight: 600;
-    border-radius: 0.7rem;
-    text-decoration: none;
-    text-align: center;
-    transition: all 0.3s ease;
-    display: block;
-    margin: 0 auto;
-    max-width: fit-content;
-    box-shadow: 
-        inset 0 2px 4px rgba(255,255,255,0.4),
-        inset 0 -2px 4px rgba(0,0,0,0.2),
-        0 4px 8px rgba(0,0,0,0.15);
+.cv-btn {
+  --fill: 0%;
+  --fill-num: 0;
+  --glow: 0;
+  --label-base: #333333;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  overflow: hidden;
+  isolation: isolate;
+  min-width: 12.5rem;
+  margin: 0 auto;
+  max-width: fit-content;
+  padding: 0.8rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 0.7rem;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(236, 240, 246, 0.42) 45%,
+    rgba(206, 214, 224, 0.34) 100%
+  );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--label-base);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.55),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.18),
+    0 4px 8px rgba(0, 0, 0, 0.15),
+    0 0 calc(var(--glow) * 26px) rgba(255, 45, 0, calc(var(--glow) * 0.6));
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
-/* Hover */
-
-.cv-btn:hover{
-    transform: translateY(-3px);
-    box-shadow: 
-        inset 0 2px 4px rgba(255,255,255,0.5),
-        inset 0 -2px 4px rgba(0,0,0,0.25),
-        0 12px 24px rgba(128,128,128,0.4),
-        0 0 20px rgba(192,192,192,0.3);
+.cv-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.22),
+    0 12px 24px rgba(128, 128, 128, 0.4),
+    0 0 calc(var(--glow) * 34px) rgba(255, 45, 0, calc(var(--glow) * 0.7));
 }
 
-/* OUTLINE VARIANT */
-
-.cv-btn-outline{
-    background: transparent;
-    border: 2px solid #c0c0c0;
-    color: #666;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+.cv-btn:focus-visible {
+  outline: 2px solid #ff4d00;
+  outline-offset: 3px;
 }
 
-.cv-btn-outline:hover{
-    background: 
-        linear-gradient(145deg, #e0e0e0 0%, #d0d0d0 30%, #b8b8b8 70%, #a8a8a8 100%),
-        linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 50%);
-    color: #333;
-    box-shadow: 
-        inset 0 2px 4px rgba(255,255,255,0.4),
-        inset 0 -2px 4px rgba(0,0,0,0.2),
-        0 4px 8px rgba(0,0,0,0.15);
+/* ---------- lava body ---------- */
+
+.cv-btn__water {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  height: var(--fill);
+  pointer-events: none;
+  background: radial-gradient(
+    130% 95% at 50% 100%,
+    #ffc4a0 0%,
+    #ff7026 20%,
+    #ff2d00 48%,
+    #d61200 74%,
+    #8a0800 100%
+  );
+  box-shadow: 0 -2px 16px rgba(255, 58, 0, 0.85);
+}
+
+/* ---------- surface wave ---------- */
+
+.cv-btn__wave {
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--fill) - 7px);
+  z-index: 1;
+  width: 200%;
+  height: 14px;
+  pointer-events: none;
+  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M0 7q15-7 30 0t30 0t30 0t30 0V14H0Z' fill='%23ff8347'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 50% 100%;
+  filter: drop-shadow(0 0 6px rgba(255, 80, 0, 0.85));
+  animation: cv-btn-wave 1.8s linear infinite;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.cv-btn[data-phase="fill"] .cv-btn__wave,
+.cv-btn[data-phase="hold"] .cv-btn__wave,
+.cv-btn[data-phase="drain"] .cv-btn__wave {
+  opacity: 1;
+}
+
+@keyframes cv-btn-wave {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- bubbles ---------- */
+
+.cv-btn__bubble {
+  position: absolute;
+  bottom: 5%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  opacity: 0;
+  background: radial-gradient(
+    circle at 32% 30%,
+    #ffd9c4 0%,
+    #ff7a3a 45%,
+    #ff2d00 100%
+  );
+  box-shadow: 0 0 8px rgba(255, 60, 0, 0.9);
+  animation-name: cv-btn-bubble;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+.cv-btn__bubble--1 {
+  left: 18%;
+  --bx: -6px;
+  animation-duration: 2.6s;
+  animation-delay: 0s;
+}
+
+.cv-btn__bubble--2 {
+  left: 52%;
+  width: 5px;
+  height: 5px;
+  --bx: 5px;
+  animation-duration: 3.4s;
+  animation-delay: 0.8s;
+}
+
+.cv-btn__bubble--3 {
+  left: 78%;
+  width: 6px;
+  height: 6px;
+  --bx: -3px;
+  animation-duration: 3s;
+  animation-delay: 1.6s;
+}
+
+@keyframes cv-btn-bubble {
+  0% {
+    bottom: 4%;
+    transform: translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.95;
+  }
+  78% {
+    opacity: 0.7;
+  }
+  100% {
+    bottom: 84%;
+    transform: translateX(var(--bx, 4px)) scale(1.05);
+    opacity: 0;
+  }
+}
+
+/* ---------- labels ---------- */
+
+.cv-btn__label {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.45);
+  color: color-mix(
+    in oklab,
+    #3d0a02 calc(min(100, max(0, (var(--fill-num) - 45) * 2)) * 1%),
+    var(--label-base)
+  );
+  transition: color 0.3s ease;
+}
+
+.cv-btn__progress {
+  position: relative;
+  z-index: 3;
+  min-width: 3rem;
+  padding: 0;
+  color: color-mix(
+    in oklab,
+    #fff1e0 calc(var(--fill-num) * 1%),
+    #4b5563
+  );
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  transition:
+    opacity 0.35s ease,
+    color 0.3s ease;
+}
+
+.cv-btn[data-phase="fill"] .cv-btn__progress,
+.cv-btn[data-phase="hold"] .cv-btn__progress,
+.cv-btn[data-phase="drain"] .cv-btn__progress {
+  opacity: 1;
+}
+
+/* ---------- dark theme ---------- */
+
+html.dark .cv-btn {
+  --label-base: #e8eaf0;
+  background: linear-gradient(
+    145deg,
+    rgba(70, 18, 10, 0.5) 0%,
+    rgba(28, 24, 22, 0.55) 50%,
+    rgba(16, 14, 16, 0.5) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.07),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+    0 4px 10px rgba(0, 0, 0, 0.45),
+    0 0 calc(var(--glow) * 30px) rgba(255, 45, 0, calc(var(--glow) * 0.6));
+}
+
+html.dark .cv-btn:hover {
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.1),
+    inset 0 -2px 4px rgba(0, 0, 0, 0.45),
+    0 12px 26px rgba(0, 0, 0, 0.55),
+    0 0 calc(var(--glow) * 38px) rgba(255, 45, 0, calc(var(--glow) * 0.7));
+}
+
+html.dark .cv-btn__label {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+html.dark .cv-btn__progress {
+  color: color-mix(
+    in oklab,
+    #fff1e0 calc(var(--fill-num) * 1%),
+    #c5cad3
+  );
+}
+
+/* ---------- outline variant ---------- */
+
+.cv-btn-outline {
+  --label-base: #555555;
+  background: transparent;
+  border: 2px solid #c0c0c0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 0 calc(var(--glow) * 26px) rgba(255, 45, 0, calc(var(--glow) * 0.6));
+}
+
+.cv-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+html.dark .cv-btn-outline {
+  --label-base: #b9c0cc;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: transparent;
+}
+
+html.dark .cv-btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-btn,
+  .cv-btn__label,
+  .cv-btn__progress,
+  .cv-btn__wave {
+    transition: none;
+  }
+  .cv-btn__wave,
+  .cv-btn__bubble {
+    animation: none;
+  }
 }

@@ -5,7 +5,7 @@ import "../styles/footer.css";
 <footer class="footer">
   <div class="footer-container">
     <div class="footer-content">
-      <!-- Logo -->
+      <!-- Logo left -->
       <div class="footer-left">
         <a href="/" aria-label="Home">
           <img
@@ -21,45 +21,9 @@ import "../styles/footer.css";
         </a>
       </div>
 
-      <!-- Contact center -->
+      <!-- Social icons center -->
       <div class="footer-center">
-        <h4
-          class="contact-title"
-          data-translate
-          data-en="Contact"
-          data-es="Contacto"
-        >
-          Contact
-        </h4>
-        <div class="footer-icons-row">
-          <div class="created-section">
-            <ul class="contact-info">
-              <li
-                class="created-by"
-                data-translate
-                data-en="Created by: Alan Navarrete S"
-                data-es="Creado por: Alan Navarrete S"
-              >
-                Created by: Alan Navarrete S
-              </li>
-
-              <li
-                class="location"
-                data-translate
-                data-en="Location: Mexico City"
-                data-es="Ubicación: Ciudad de México"
-              >
-                Location: Mexico City
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Social icons right -->
-      <div class="footer-right">
         <div class="social-links-group">
-          
           <a
             href="https://www.linkedin.com/in/alan-navarrete/"
             target="_blank"
@@ -119,6 +83,61 @@ import "../styles/footer.css";
             />
           </a>
         </div>
+      </div>
+
+      <!-- Contact box right -->
+      <div class="footer-right">
+        <form class="contact-form" id="footer-contact-form" novalidate>
+          <h4
+            class="contact-form-title"
+            data-translate
+            data-en="Contact"
+            data-es="Contacto"
+          >
+            Contact
+          </h4>
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              data-translate
+              data-placeholder-en="Email"
+              data-placeholder-es="Correo electrónico"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone"
+              data-translate
+              data-placeholder-en="Phone"
+              data-placeholder-es="Teléfono"
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              name="message"
+              rows="3"
+              placeholder="Message"
+              required
+              data-translate
+              data-placeholder-en="Message"
+              data-placeholder-es="Mensaje"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="form-submit-btn"
+            data-translate
+            data-en="Send"
+            data-es="Enviar"
+          >
+            Send
+          </button>
+        </form>
       </div>
 
       <!-- Copyright -->
@@ -206,6 +225,27 @@ import "../styles/footer.css";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("footer-contact-form");
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const email = String(formData.get("email") || "");
+        const phone = String(formData.get("phone") || "");
+        const message = String(formData.get("message") || "");
+        const body = `Email: ${email}\nPhone: ${phone}\n\n${message}`;
+        const mailto = `mailto:al.yoab.nav.sa@gmail.com?subject=Contacto desde Portfolio&body=${encodeURIComponent(body)}`;
+        const whatsapp = `https://wa.me/5543547891?text=${encodeURIComponent(body)}`;
+
+        window.location.href = mailto;
+        window.open(whatsapp, "_blank", "noopener");
+      });
+    }
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("legal-modal");
     if (!modal) return;
 
@@ -248,7 +288,7 @@ import "../styles/footer.css";
 
       lastFocused = document.activeElement as HTMLElement | null;
       if (titleEl) titleEl.textContent = title;
-      if (contentEl) contentEl.textContent = "…";
+      if (contentEl) contentEl.textContent = "Loading...";
 
       modal.hidden = false;
       document.body.style.overflow = "hidden";
