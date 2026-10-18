@@ -28,6 +28,7 @@ const { cards } = Astro.props;
       <article
         class={`ec-card${index === 0 ? " is-active" : ""}`}
         data-index={index}
+        data-href={card.href}
         tabindex="0"
         role="button"
         aria-label={card.titleEn}
@@ -118,8 +119,15 @@ const { cards } = Astro.props;
 
     cards.forEach((card) => {
       card.addEventListener("mouseenter", () => setActive(card));
-      card.addEventListener("click", () => setActive(card));
       card.addEventListener("focus", () => setActive(card));
+      card.addEventListener("click", () => {
+        const href = card.dataset.href;
+        if (card.classList.contains("is-active") && href) {
+          window.open(href, "_blank", "noopener");
+          return;
+        }
+        setActive(card);
+      });
     });
 
     root.querySelectorAll<HTMLAnchorElement>(".ec-link").forEach((link) => {
