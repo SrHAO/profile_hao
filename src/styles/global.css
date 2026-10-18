@@ -64,3 +64,35 @@ transform:translateX(-50%);
 .dark .index-p-text {
   color: #f3f4f6 !important;
 }
+
+/* Site background video */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.05) saturate(0.75) contrast(0.95);
+}
+
+.site-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+html.dark .site-bg-video {
+  filter: brightness(0.7) saturate(0.85);
+}
+
+html.dark .site-bg-overlay {
+  background: rgba(0, 0, 0, 0.55);
+}

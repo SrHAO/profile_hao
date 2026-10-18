@@ -60,7 +60,7 @@
 /* PARAGRAPHS */
 
 .about-section p {
-  color: #9ca3af;
+  color: #6b7280;
 
   line-height: 1.8;
 
@@ -69,6 +69,10 @@
   max-width: 700px;
 
   margin: 0 auto;
+}
+
+html.dark .about-section p {
+  color: #9ca3af;
 }
 
 /* SKILLS GRID */

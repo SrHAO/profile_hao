@@ -39,10 +39,15 @@ const { name, icon, descriptionEN, descriptionES } = Astro.props;
         });
       }
 
-      // Flip on click
+      // Flip on click (only one open at a time)
       document.addEventListener('click', (e) => {
         const card = e.target.closest('.skill-flip');
-        if(card) card.classList.toggle('flipped');
+        if (!card) return;
+        const willOpen = !card.classList.contains('flipped');
+        document.querySelectorAll('.skill-flip.flipped').forEach((c) => {
+          if (c !== card) c.classList.remove('flipped');
+        });
+        card.classList.toggle('flipped', willOpen);
       });
 
       // Initial

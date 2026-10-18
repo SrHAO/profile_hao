@@ -10,7 +10,11 @@ html.dark {
   --text-secondary: #c5cad3;
 }
 
-body {
+html {
   background-color: var(--bg-primary);
+}
+
+body {
+  background-color: transparent;
   color: var(--text-primary);
 }

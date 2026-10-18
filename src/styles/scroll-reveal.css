@@ -182,22 +182,14 @@
   transition: all 0.5s ease;
 }
 
-/* TYPEWRITER CORREGIDO */
+/* TYPEWRITER: revelado con clip-path (sin capa de fondo) */
 .typewriter {
   position: relative;
   display: block;
   width: 100%;
   max-width: 100%;
   color: var(--text-color);
-}
-
-/* layer that covers the text */
-.typewriter::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--bg-color);
-  transform: translateX(0);
+  clip-path: inset(0 100% 0 0);
 }
 
 /* cursor */
@@ -212,9 +204,9 @@
   opacity: 0;
 }
 
-/* animación */
-.typewriter.animate::after {
-  animation: reveal var(--duration, 2s) steps(40, end) forwards;
+/* animación de revelado */
+.typewriter.animate {
+  animation: typeReveal var(--duration, 2s) steps(40, end) forwards;
 }
 
 .typewriter.animate::before {
@@ -222,9 +214,9 @@
   opacity: 1;
 }
 /* reveal */
-@keyframes reveal {
-  from { transform: translateX(0); }
-  to { transform: translateX(100%); }
+@keyframes typeReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0 0 0); }
 }
 
 /* cursor blink */
